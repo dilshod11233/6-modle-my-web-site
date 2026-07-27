@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <header class="p-3  bg-[black] md:p-[20px]">
+        <div class="container items-center flex justify-between max-w-[1232px] mx-auto w-full relative">
+            <a href="#" class="logo ">
+                <img src="./img/Text.svg" alt="Logo" class="h-8 md:h-auto">
+            </a>
+
+            <ul id="nav-menu"
+                class=" hidden fixed inset-0 bg-[#1a1a1a] flex-col items-center justify-center space-y-6 z-40 md:relative md:inset-auto md:bg-transparent md:flex md:flex-row md:space-y-0 md:space-x-8">
+                <li class="inline-block group relative">
+                    <a href="#"
+                        class="text-18px md:text-[16px] hover:text-[#F2C36B] text-[#D2C5B2] font-medium tracking-wide">MENY</a>
+                    <span
+                        class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                </li>
+                <li class="inline-block group relative">
+                    <a href="#"
+                        class="text-18px md:text-[16px] hover:text-[#F2C36B] text-[#D2C5B2] font-medium tracking-wide">TAJRIBA</a>
+                    <span
+                        class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                </li>
+                <li class="inline-block group relative">
+                    <a href="#"
+                        class="text-18px md:text-[16px] hover:text-[#F2C36B] text-[#D2C5B2] font-medium tracking-wide">SHAXSIY
+                        ZIYOFAT</a>
+                    <span
+                        class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                </li>
+                <li class="inline-block group relative">
+                    <a href="#"
+                        class="text-18px md:text-[16px] hover:text-[#F2C36B] text-[#D2C5B2] font-medium tracking-wide">GALEREYA</a>
+                    <span
+                        class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                </li>
+            </ul>
+            <div class="text-center hidden max-[768px]:inline-block">
+                <button
+                    class="inline-flex  rotate-[90deg] text-[25px] items-center justify-center text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+                    type="button" data-drawer-target="drawer-disable-body-scrolling"
+                    data-drawer-show="drawer-disable-body-scrolling" data-drawer-body-scrolling="false"
+                    aria-controls="drawer-disable-body-scrolling">
+                    |||
+                </button>
+            </div>
+            <div id="drawer-disable-body-scrolling"
+                class="fixed rounded-[40px] mt-[-2px] border-[1px] max-[300px] top-0 left-0 z-40 h-screen backdrop-blur-[8px] p-4 overflow-y-auto transition-transform -translate-x-full bg-neutral-primary-soft w-80 border-e border-default"
+                tabindex="-1" aria-labelledby="drawer-disable-body-scrolling-label">
+                <div class="border-default pb-4 flex items-center">
+                    <button type="button" data-drawer-hide="drawer-disable-body-scrolling"
+                        aria-controls="drawer-disable-body-scrolling"
+                        class="text-body bg-transparent hover:text-heading hover:bg-neutral-tertiary rounded-base w-9 h-9 absolute top-2.5 end-2.5 flex items-center justify-center">
+                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18 17.94 6M18 18 6.06 6" />
+                        </svg>
+                        <span class="sr-only">Close menu</span>
+                    </button>
+                </div>
+                <div class="py-5 overflow-y-auto">
+                    <ul>
+                        <li class="py-3">
+                            <a href=""
+                                class="text-[42px]  pl-[60px] duration-[0.3s] hover:text-[#F2C36B] text-[#D2C5B2] font-[Playfair Display] tracking-wide">MENY</a>
+                            <span
+                                class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                        </li>
+                        <li class="py-3">
+                            <a href=""
+                                class="text-[42px] pl-[50px]  duration-[0.3s] hover:text-[#F2C36B] text-[#D2C5B2] font-[Playfair Display] tracking-wide">TAJRIBA</a>
+                            <span
+                                class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                        </li>
+                        <li class="py-3">
+                            <a href=""
+                                class="text-[42px] pt-[31px]  duration-[0.3s] hover:text-[#F2C36B] text-[#D2C5B2] font-[Playfair Display] tracking-wide">XUSUSIY
+                                TADBIRLAR</a>
+                            <span
+                                class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                        </li>
+                        <li class="py-3">
+                            <a href=""
+                                class="text-[42px] pl-[50px]  duration-[0.3s] hover:text-[#F2C36B] text-[#D2C5B2] font-[Playfair Display] tracking-wide">GALEREYA</a>
+                            <span
+                                class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <button data-modal-target="crud-modal" data-modal-toggle="crud-modal"
+                    class="text-white ml-15 max-w-[300px]  bg-linear-65 from-[#E8734A] to-[#D4A853] rounded-[9999px]  focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+                    type="button">
+                    Stol band qilish
+                </button>
+
+
+            </div>
+
+
+            <button data-modal-target="crud-modal" data-modal-toggle="crud-modal"
+                class="text-white   bg-linear-65 from-[#E8734A] to-[#D4A853] rounded-[9999px] box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+                type="button">
+                Stol band qilish
+            </button>
+
+            <div id="crud-modal" tabindex="-1" aria-hidden="true"
+                class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                <div class="relative p-4 w-full max-w-md max-h-full">
+                    <div class="relative bg-linear-65 from-[#E8734A] to-[#D4A853]  rounded-[10px] shadow-sm p-4 md:p-6">
+                        <div class="flex items-center justify-between  border-default pb-4 md:pb-5">
+                            <h3 class="text-lg text-white font-medium text-heading">
+                                Stol band qilish
+                            </h3>
+                            <button type="button"
+                                class="text-body bg-transparent hover:bg-neutral-tertiary hover:text-heading rounded-base text-sm w-9 h-9 ms-auto inline-flex justify-center items-center"
+                                data-modal-hide="crud-modal">
+                                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6" />
+                                </svg>
+                                <span class="sr-only">Close modal</span>
+                            </button>
+                        </div>
+
+                        <form action="#">
+                            <div class="grid gap-4 grid-cols-2 py-4 md:py-6">
+                                <div class="col-span-2">
+                                    <label for="name"
+                                        class="block text-white mb-2.5 text-sm font-medium text-heading">Ismizngiz</label>
+                                    <input type="text" name="name" id="name"
+                                        class="bg-neutral-secondary-medium border-none rounded-[10px] text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+                                        placeholder="Ismizngizni kiriting" required="">
+                                </div>
+                                <div class="col-span-2 sm:col-span-1">
+                                    <label for="price"
+                                        class="block mb-2.5 text-white text-sm font-medium text-heading">Joy
+                                        narxi</label>
+                                    <input type="number" name="price" id="price"
+                                        class="bg-neutral-secondary-medium rounded-[10px] border-none text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+                                        placeholder="$2999" required="">
+                                </div>
+                                <div class="col-span-2 sm:col-span-1">
+                                    <label for="category"
+                                        class="block text-white mb-2.5 text-sm font-medium text-heading">Joyni
+                                        tanlang</label>
+                                    <select id="category"
+                                        class="block w-full px-3 py-2.5 bg-white border-none rounded-[10px] border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand px-3 py-2.5 shadow-xs placeholder:text-body">
+                                        <option selected="">Oilaviy joy</option>
+                                        <option value="">Ikkishilik joy</option>
+                                        <option value="PC">Tug'ulgan kun uchun joy</option>
+                                    </select>
+                                </div>
+                                <div class="col-span-2">
+                                    <label for="description"
+                                        class="block mb-2.5 text-sm font-medium text-white text-heading">Izoh</label>
+                                    <textarea id="description" rows="4"
+                                        class="block bg-white border-none rounded-[10px] border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full p-3.5 shadow-xs placeholder:text-body"
+                                        placeholder="Biz haqimizda Izoh"></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section
+            class="relative max-w-[] h-screen  w-full flex flex-col justify-between items-center px-6 py-10 p-4 md:px-12 md:py-16 overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img src="./img/bg-img.png" alt="" class="w-full h-full object-cover brightness-[0.35] contrast-[1.1]">
+                <div class="absolute inset-0 via-transparent"></div>
+                <div class="absolute inset-0  from-transparent"></div>
+            </div>
+            <div class="relative z-10 text-center mt-20 mb-5 animate-fade-in">
+                <p class="text-[10px] md:text-xs tracking-[10px] text-amber-500/80 uppercase font-medium">
+                    1998-YILDAN BERI YUQORI DARAJADAGI OSHXONA
+                </p>
+            </div>
+
+            <div class="relative z-10 text-center max-w-4xl mx-auto my-auto px-4">
+                <h1
+                    class="font-serif-premium italic text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-stone-100 leading-[1.15] md:leading-[1.1] tracking-wide select-none drop-shadow-2xl">
+                    Ta'mdan tashqari bir tajriba
+                </h1>
+            </div>
+
+            <div class="relative z-10 w-full max-w-6xl mx-auto flex flex-col  items-center gap-8">
+                <div
+                    class="w-full flex flex-wrap justify-between items-center gap-y-4 gap-x-8 md:gap-x-12 border-t border-white/10 pt-8 text-[10px] md:text-xs tracking-widest text-stone-400 font-medium uppercase">
+                    <div class="flex items-center gap-2 hover:text-amber-500 transition-colors duration-300">
+                        <img src="./img/Container (1).svg" alt="">
+                        <span>Michelin Guide 2023 Tavsiya Etilgan</span>
+                    </div>
+
+                    <div class="flex items-center gap-2 hover:text-amber-500 transition-colors duration-300">
+                        <img src="./img/Container (2).svg" alt="">
+                        <span>Top 50 Gastronomiya Yo'nalishlari</span>
+                    </div>
+
+                    <div class="flex items-center gap-2 hover:text-amber-500 transition-colors duration-300">
+                        <img src="./img/Container (3).svg" alt="">
+                        <span>World Luxury Restaurant Awards</span>
+                    </div>
+
+                </div>
+                <div class="flex mb-2 flex-col items-center gap-2 mt-2 cursor-pointer">
+                    <div
+                        class="w-5  h-8 border-2 border-amber-500/60 rounded-full flex justify-center p-1 group-hover:border-amber-500 ">
+                        <div class="w-1 h-2 bg-amber-500 rounded-full "></div>
+                    </div>
+                    <span class="text-[9px] tracking-[0.2em] uppercase text-stone-500 transition-colors ">
+                        Pastga
+                    </span>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="py-12 sm:py-16 md:py-24 bg-[#131315]">
+            <div class="max-w-[1232px] mx-auto w-full px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-16 items-center">
+                    <div class="flex items-end gap-3 sm:gap-4 md:gap-6">
+                        <div class="w-1/2">
+                            <img src="./img/f8a43a5bcdbf0fde9a2740bcb96def36c32b53c6 (1).jpg" alt="Oshxona"
+                                class="rounded-[10px] w-full h-[200px] xs:h-[240px] sm:h-[300px] md:h-[340px] object-cover">
+                        </div>
+                        <div class="w-1/2 -translate-y-6 sm:-translate-y-8 md:-translate-y-12">
+                            <img src="./img/d833a4f21e5694b80d6c62c53e029e5048cde1db.jpg" alt="Restoran zali"
+                                class="rounded-[10px] w-full h-[200px] xs:h-[240px] sm:h-[300px] md:h-[340px] object-cover">
+                        </div>
+                    </div>
+
+                    <div class="w-full">
+                        <h2
+                            class="text-[26px] xs:text-[30px] sm:text-[36px] lg:text-[44px] leading-tight font-[Manrope] text-[#F5EFE6] mb-4 sm:mb-6">
+                            Olov va ishtiyoq bilan yaratilgan
+                        </h2>
+
+                        <p
+                            class="font-[Manrope] text-[14px] sm:text-[15px] md:text-[16px] text-[#A8A5A0] leading-relaxed pb-6 sm:pb-8 mb-6 sm:mb-8 border-b border-[#D4A8531F]">
+                            Bizning sayohatimiz oddiy ishonch bilan boshlandi: olov taom pishirishning
+                            eng samimiy usulidir. Saffron &amp; Ember-da biz issiqlik va mahsulot o'rtasidagi
+                            sof, asosiy aloqani nishonlash uchun zamonaviy oshxonaning barcha
+                            sun'iyliklarini olib tashlaymiz.
+                        </p>
+
+                        <div
+                            class="grid grid-cols-2 gap-y-6 sm:gap-y-8 gap-x-4 sm:gap-x-6 pb-6 sm:pb-8 mb-6 sm:mb-8 border-b border-[#D4A8531F]">
+                            <div>
+                                <p
+                                    class="text-[#F2C36B] text-[26px] xs:text-[30px] sm:text-[34px] font-[Playfair Display]">
+                                    25+</p>
+                                <p
+                                    class="text-[#6B6862] text-[12px] sm:text-[13px] md:text-[14px] font-[Manrope] tracking-wide uppercase mt-1">
+                                    Yillik tajriba</p>
+                            </div>
+                            <div>
+                                <p
+                                    class="text-[#F2C36B] text-[26px] xs:text-[30px] sm:text-[34px] font-[Playfair Display]">
+                                    03</p>
+                                <p
+                                    class="text-[#6B6862] text-[12px] sm:text-[13px] md:text-[14px] font-[Manrope] tracking-wide uppercase mt-1">
+                                    Global manzillar</p>
+                            </div>
+                            <div>
+                                <p
+                                    class="text-[#F2C36B] text-[26px] xs:text-[30px] sm:text-[34px] font-[Playfair Display]">
+                                    140+</p>
+                                <p
+                                    class="text-[#6B6862] text-[12px] sm:text-[13px] md:text-[14px] font-[Manrope] tracking-wide uppercase mt-1">
+                                    Noyob taomlar</p>
+                            </div>
+                            <div>
+                                <p
+                                    class="text-[#F2C36B] text-[26px] xs:text-[30px] sm:text-[34px] font-[Playfair Display]">
+                                    12k</p>
+                                <p
+                                    class="text-[#6B6862] text-[12px] sm:text-[13px] md:text-[14px] font-[Manrope] tracking-wide uppercase mt-1">
+                                    Mehmonlar</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3 sm:gap-4">
+                            <img src="./img/b8f235e6dbc05add0c04006d1e6161f5a62737cc.jpg" alt="Bosh oshpaz Markus Torn"
+                                class="w-12 h-12 sm:w-14 sm:h-14 rounded-[8px] object-cover flex-shrink-0">
+                            <p class="text-[#F5EFE6] font-[Manrope] text-[14px] sm:text-[15px] md:text-[16px]">Bosh
+                                oshpaz, Markus Torn</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="pt-[80px] md:pt-[120px] pb-5 bg-[#0E0E10]">
+            <div class="max-w-[1232px] mx-auto w-full px-4 sm:px-6 lg:px-8">
+                <div class="">
+                    <p class="text-center text-[#F2C36B] text-sm sm:text-[16px] font-[Manrope]">GASTRONOMIYA</p>
+                    <h1 class="text-[28px] sm:text-[36px] lg:text-[48px] font-[Manrope] text-center text-[#F5EFE6]">
+                        Tanlangan menyular</h1>
+                </div>
+                <div class="">
+
+                    <div class="mb-4 overflow-x-auto">
+                        <ul class="flex flex-nowrap sm:flex-wrap p-2 rounded-[9999px] gap-0 justify-start sm:justify-center mt-8 sm:mt-[50px] text-sm font-medium text-center w-max sm:w-auto mx-auto"
+                            id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
+                            <div
+                                class="flex bg-[#16161AB2] max-w-[700px] border border-[#D4A8531F] rounded-[9999px] p-2">
+                                <li class="me-2" role="presentation">
+                                    <button
+                                        class="whitespace-nowrap werte inline-block text-sm sm:text-[16px] font-[Manrope] hover:text-[#412D00] text-[#A8A5A0] py-2 sm:py-3 px-4 sm:px-[42px]  hover:bg-linear-65 from-[#E8734A] to-[#D4A853] rounded-[9999px]"
+                                        id="profile-tab" data-tabs-target="#profile" type="button" role="tab"
+                                        aria-controls="profile" aria-selected="false">Kechgi ovqat</button>
+                                </li>
+                                <li class="me-2" role="presentation">
+                                    <button
+                                        class="whitespace-nowrap inline-block text-sm sm:text-[16px] hover:text-[#412D00] text-[#A8A5A0] font-[Manrope] py-2 sm:py-3 px-3 sm:px-[28px] hover:bg-linear-65 from-[#E8734A] to-[#D4A853] rounded-[9999px]"
+                                        id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab"
+                                        aria-controls="dashboard" aria-selected="false">Nonushta</button>
+                                </li>
+                                <li class="me-2" role="presentation">
+                                    <button
+                                        class="whitespace-nowrap inline-block text-sm sm:text-[16px] hover:text-[#412D00] text-[#A8A5A0] font-[Manrope] py-2 sm:py-3 px-4 sm:px-[42px] hover:bg-linear-65 from-[#E8734A] to-[#D4A853] rounded-[9999px]"
+                                        id="settings-tab" data-tabs-target="#settings" type="button" role="tab"
+                                        aria-controls="settings" aria-selected="false">Tushlik</button>
+                                </li>
+                                <li role="presentation">
+                                    <button
+                                        class="whitespace-nowrap inline-block hover:text-[#412D00] text-[#A8A5A0] text-sm sm:text-[16px] py-2 sm:py-3 px-4 sm:px-[42px] hover:bg-linear-65 from-[#E8734A] to-[#D4A853] rounded-[9999px]"
+                                        id="contacts-tab" data-tabs-target="#contacts" type="button" role="tab"
+                                        aria-controls="contacts" aria-selected="false">Oshpaz maxsusi</button>
+                                </li>
+                            </div>
+                        </ul>
+                    </div>
+
+                    <div id="default-tab-content">
+                        <div class="hidden p-4 rounded-base bg-neutral-secondary-soft" id="profile" role="tabpanel"
+                            aria-labelledby="profile-tab">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                <div class="w-full pt-8 sm:pt-[64px]">
+                                    <img class="rounded-[10px] w-full" src="./img/tirnoq.png" alt="">
+                                    <h1
+                                        class="text-[#F2C36B] py-4 text-lg sm:text-[24px] font-[Manrope] flex items-center  gap-2 flex-wrap">
+                                        <span>Qovurilgan taroqchalar</span>
+                                        <span class="text-[16px]  text-[#F5EFE6]"><span
+                                                class="text-[#D4A8534D]">..........................</span>$32</span>
+                                    </h1>
+                                    <p class="font-[Manrope] text-base sm:text-[19px] text-[#6B6862]">Qora sarimsoq,
+                                        za'faron ko'pigi, kuydirilgan porey piyozi.</p>
+                                </div>
+                                <div class="w-full pt-8 sm:pt-[64px] sm:mt-[30px]">
+                                    <img class="w-full" src="./img/Container (1).png" alt="">
+                                    <h1
+                                        class="text-[#F2C36B] py-4 text-lg sm:text-[24px] font-[Manrope] flex items-center  gap-2 flex-wrap">
+                                        <span>Pishirilgan Ribay</span>
+                                        <span class="text-[16px] font-[Playfair Display] text-[#F5EFE6]"><span
+                                                class="text-[#D4A8534D]">.......................................</span>$64</span>
+                                    </h1>
+                                    <p class="font-[Manrope] text-base sm:text-[19px] text-[#6B6862]">45 kun davomida
+                                        pishirilgan, dudlangan ilik yog'i, tryufel sharbati.</p>
+                                </div>
+                                <div class="w-full pt-8 sm:pt-[64px]">
+                                    <img class="rounded-[10px] w-full" src="./img/Container (2).png" alt="">
+                                    <h1
+                                        class="text-[#F2C36B] py-4 text-lg sm:text-[24px] font-[Manrope] flex items-center  gap-2 flex-wrap">
+                                        <span>Dudlangan Kakao</span>
+                                        <span class="text-[16px] font-[Playfair Display] text-[#F5EFE6]"><span
+                                                class="text-[#D4A8534D]">.....................................</span>$24</span>
+                                    </h1>
+                                    <p class="font-[Manrope] text-base sm:text-[19px] text-[#6B6862]">70% qora shokolad,
+                                        dudlangan tuz, malinali cho'g'.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hidden w-full" id="dashboard" role="tabpanel" aria-labelledby="Kechgi ovqat-tab">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                                <div class="w-full pt-8 sm:pt-[64px]">
+                                    <img class="rounded-[10px] w-full" src="./img/sanvich.png" alt="">
+                                    <h1
+                                        class="text-[#F2C36B] py-4 text-lg sm:text-[24px] font-[Manrope] flex items-center  gap-2 flex-wrap">
+                                        <span>Go'shtli sandvich</span>
+                                        <span class="text-[16px] font-[Playfair Display] text-[#F5EFE6]"><span
+                                                class="text-[#D4A8534D]">..........................................</span>$20</span>
+                                    </h1>
+                                    <p class="font-[Manrope] text-base sm:text-[19px] text-[#6B6862]">Qovirilgan go'sht,
+                                        eritilgan pishloq pamidor va bodiring va non.</p>
+                                </div>
+                                <div class="w-full pt-8 sm:pt-[64px] sm:mt-[30px]">
+                                    <img class="rounded-[10px] w-full h-[390px]! sm:h-80 object-cover"
+                                        src="./img/shrnlik.png" alt="">
+                                    <h1
+                                        class="text-[#F2C36B] text-lg sm:text-[24px] font-[Manrope] flex items-center  gap-2 flex-wrap pt-4">
+                                        <span>Cofe va chezkiyek</span>
+                                        <span class="text-[16px] font-[Playfair Display] text-[#F5EFE6]"><span
+                                                class="text-[#D4A8534D]">.......................................</span>$32</span>
+                                    </h1>
+                                    <p class="font-[Manrope] text-base sm:text-[19px] text-[#6B6862]">Issiq cofe va
+                                        nozik qolli shirinli shokaladi bilan.</p>
+                                </div>
+                                <div class="w-full pt-8 sm:pt-[64px]">
+                                    <img class="rounded-[10px] w-full h-[383px]! object-coversm:h-67 "
+                                        src="./img/stek.png" alt="">
+                                    <h1
+                                        class="text-[#F2C36B] text-lg sm:text-[24px] font-[Manrope] flex items-center gap-2 flex-wrap pt-4">
+                                        <span>Dudlangan go'sht</span>
+                                        <span class="text-[16px] font-[Playfair Display] text-[#F5EFE6]"><span
+                                                class="text-[#D4A8534D]">..........................................</span>$48</span>
+                                    </h1>
+                                    <p class="font-[Manrope] text-base sm:text-[19px] text-[#6B6862]">Go'sht dudlangan
+                                        qovirilgan kartoshka va qo'shimcha salatlar.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hidden" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                                <div class="w-full pt-8 sm:pt-[64px]">
+                                    <img class="rounded-[10px] w-full h-100 object-cover" src="./img/tushlik.png"
+                                        alt="">
+                                    <h1
+                                        class="text-[#F2C36B] text-lg sm:text-[24px] font-[Manrope] flex items-center  gap-2 flex-wrap pt-4">
+                                        <span>Chez Burger</span>
+                                        <span class="text-[16px] font-[Playfair Display] text-[#F5EFE6]"><span
+                                                class="text-[#D4A8534D]">.....................................................</span>$19</span>
+                                    </h1>
+                                    <p class="font-[Manrope] text-base sm:text-[19px] text-[#6B6862]">Yumshoq non va
+                                        kalit ikkita pishirilgan va karam pamidor va iriydigan pishloq.</p>
+                                </div>
+                                <div class="w-full pt-10 sm:pt-[64px] sm:mt-[50px]">
+                                    <img class="rounded-[10px] w-full h-100 object-cover " src="./img/lavash.png"
+                                        alt="">
+                                    <h1
+                                        class="text-[#F2C36B] text-lg sm:text-[24px] font-[Manrope] flex items-center gap-2 flex-wrap pt-4">
+                                        <span>Big lavash</span>
+                                        <span class="text-[16px] font-[Playfair Display] text-[#F5EFE6]"><span
+                                                class="text-[#D4A8534D]">.........................................................</span>$25</span>
+                                    </h1>
+                                    <p class="font-[Manrope] text-base sm:text-[19px] text-[#6B6862]">Lavash ichida
+                                        go'shlar va o'zing sousi bilan.</p>
+                                </div>
+                                <div class="w-full pt-8 sm:pt-[64px]">
+                                    <img class="rounded-[10px] w-full h-100 object-cover" src="./img/grill.png" alt="">
+                                    <h1
+                                        class="text-[#F2C36B] text-lg sm:text-[24px] font-[Manrope] flex items-center gap-2 flex-wrap pt-4">
+                                        <span>olovdagi tovuq</span>
+                                        <span class="text-[16px] font-[Playfair Display] text-[#F5EFE6]"><span
+                                                class="text-[#D4A853]">.................................................</span>$72</span>
+                                    </h1>
+                                    <p class="font-[Manrope] text-base sm:text-[19px] text-[#6B6862]">Yog'li tovuqli
+                                        go'sht q'shimcha sousi bilan shirin va mazali tovuq go'sht.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hidden" id="contacts" role="tabpanel" aria-labelledby="contacts-tab"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-[#0c0c0c] text-white py-16 px-6 font-sans">
+            <div class="max-w-[1232px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="flex flex-col items-start text-left space-y-4">
+                    <div class="text-[#e2a857]">
+                        <img class="w-[25px]" src="./img/Icon (1).png" alt="">
+                    </div>
+                    <h3 class="text-[20px] font-[Playfair Display] tracking-wide text-gray-100">O'tin pechi</h3>
+                    <p class="text-[#6B6862] text-[16px] leading-relaxed font-[Manrope]">
+                        Bizning maxsus tosh ochog'imizda an'anaviy usullar zamonaviy nafosat bilan uchrashadi.
+                    </p>
+                </div>
+
+                <div class="flex flex-col items-start text-left space-y-4">
+                    <div class="text-[#e2a857]">
+                        <img class="w-[25px]" src="./img/Icon (2).png" alt="">
+                    </div>
+                    <h3 class="text-[20px] font-[Playfair Display] tracking-wide text-gray-100">Halol manbalar</h3>
+                    <p class="text-[#6B6862] text-[16px] leading-relaxed font-[Manrope]">
+                        Mahalliy yetkazib beruvchilar va barqaror fermer xo'jaliklari bilan bevosita hamkorlik.
+                    </p>
+                </div>
+
+                <div class="flex flex-col items-start text-left space-y-4">
+                    <div class="text-[#e2a857]">
+                        <img class="w-[20px]" src="./img/Icon (3).png" alt="">
+                    </div>
+                    <h3 class="text-[20px] font-[Playfair Display] tracking-wide text-gray-100">Saralangan yerto'la</h3>
+                    <p class="text-[#6B6862] text-[16px] leading-relaxed font-[Manrope]">
+                        Noyob yillardagi vinolardan tortib, avangard tabiiy vinolargacha 400 dan ortiq turlar.
+                    </p>
+                </div>
+
+                <div class="flex flex-col items-start text-left space-y-4">
+                    <div class="text-[#e2a857]">
+                        <img class="w-[25px]" src="./img/Icon (4).png" alt="">
+                    </div>
+                    <h3 class="text-20px font-[Playfair Display] tracking-wide text-gray-100">Hissiyotlar teatri</h3>
+                    <p class="text-[#6B6862] text-[16px] leading-relaxed font-[Manrope]">
+                        Har bir tuyg'uni kuchaytirish uchun mo'ljallangan immersiv ovqatlanish muhiti.
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="relative w-full h-[400px] md:h-[500px] overflow-hidden">
+            <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline poster="">
+                <source src="your-video-file.mp4" type="video/mp4">
+                Brauzeringiz video tegini qo'llab-quvvatlamaydi.
+            </video>
+
+            <div class="absolute inset-0 bg-black/40"></div>
+            <div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
+                <button id="playBtn"
+                    class="group flex items-center justify-center w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/20 backdrop-blur-sm border border-white/40 hover:bg-white/30 transition-all duration-300 mb-6">
+                    <svg class="w-8 h-8 md:w-9 md:h-9 text-white ml-1 group-hover:scale-110 transition-transform"
+                        fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                    </svg>
+                </button>
+                <p class="text-white/90 text-sm md:text-base tracking-[0.3em] uppercase font-light">
+                    Ritualni Tomosha Qiling
+                </p>
+
+            </div>
+
+        </section>
+
+        <section class="bg-[#111111] text-gray-300 min-h-screen flex items-center justify-center py-16 md:py-24 px-4">
+            <div class="max-w-[1232px] w-full mx-auto text-center">
+                <p class="text-[#c19a5b] text-xs uppercase tracking-[0.2em] font-[Manrope] mb-4">
+                    Mehmonlar hikoyalari
+                </p>
+                <h2 class="font-[Manrope] text-white text-3xl sm:text-4xl md:text-[48px] font-bold mb-12 tracking-wide">
+                    Zulmatdan sado
+                </h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+                    <div
+                        class="border border-[#D4A8531F] hover:border-[#D4A853] duration-300 hover:bg-[#141715] bg-[#141414] p-6 md:p-8 rounded-[12px] flex flex-col justify-between min-h-[300px] md:min-h-[320px]">
+                        <div>
+                            <div class="flex items-center mb-5">
+                                <img src="./img/yulduz.png" alt="Yulduz" class="h-4 w-auto object-contain">
+                            </div>
+                            <p
+                                class="font-[Playfair Display] italic text-gray-300 text-[15px] md:text-[16px] leading-relaxed">
+                                "Buni tasvirlashning eng yaxshi usuli - oshpazlik teatri. O'tin olovi hidi va za'faronli
+                                taomlar ta'mi hayratlanarli darajada ajoyib."
+                            </p>
+                        </div>
+                        <p class="text-gray-500 font-[Manrope] text-xs tracking-wider uppercase mt-6 font-medium">
+                            — Eleanor Rigby, Vogue
+                        </p>
+                    </div>
+
+                    <div
+                        class="border border-[#D4A8531F] hover:border-[#D4A853] duration-300 hover:bg-[#141715] bg-[#141414] p-6 md:p-8 rounded-[12px] flex flex-col justify-between min-h-[300px] md:min-h-[320px]">
+                        <div>
+                            <div class="flex items-center mb-5">
+                                <img src="./img/yulduz.png" alt="Yulduz" class="h-4 w-auto object-contain">
+                            </div>
+                            <p
+                                class="font-[Playfair Display] italic text-gray-300 text-[15px] md:text-[16px] leading-relaxed font-light">
+                                "Atmosfera menyu kabi sinchiklab ishlab chiqilgan noyob joy. Sakkizoyoq men istalgan
+                                Michelin yulduzli muassasada tatib ko'rganlarimning eng yaxshisi edi."
+                            </p>
+                        </div>
+                        <p class="text-gray-500 font-[Manrope] text-xs tracking-wider uppercase mt-6 font-medium">
+                            — Julian Casablancas
+                        </p>
+                    </div>
+                    <div
+                        class="border border-[#D4A8531F] hover:border-[#D4A853] duration-300 hover:bg-[#141715] bg-[#141414] p-6 md:p-8 rounded-[12px] flex flex-col justify-between min-h-[300px] md:min-h-[320px] sm:max-lg:col-span-2 sm:max-lg:max-w-md sm:max-lg:mx-auto sm:max-lg:w-full">
+                        <div>
+                            <div class="flex items-center mb-5">
+                                <img src="./img/yulduz.png" alt="Yulduz" class="h-4 w-auto object-contain">
+                            </div>
+                            <p
+                                class="font-[Playfair Display] italic text-gray-300 text-[15px] md:text-[16px] leading-relaxed font-light">
+                                "Saffron & Ember nafaqat kechki ovqat, balki xotiradir. Yorug'lik va sukunatga bo'lgan
+                                e'tibor har bir luqmani unutilmas qiladi."
+                            </p>
+                        </div>
+                        <p class="text-gray-500 font-[Manrope] text-xs tracking-wider uppercase mt-6 font-medium">
+                            — Sarah Jenkins, Food & Wine
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-[#131315] px-4 py-16 md:py-24">
+            <div class="max-w-[1232px] mx-auto w-full" id="accordion-flush" data-accordion="collapse"
+                data-active-classes="bg-transparent text-heading" data-inactive-classes="text-body">
+                <h1
+                    class="font-[Manrope] hover:text-[#F2C36B] duration-200 font-bold text-3xl md:text-[40px] text-center mb-8 md:mb-12 text-[#F5EFE6] tracking-wide">
+                    Savollar
+                </h1>
+                <div class="max-w-[672px] mx-auto space-y-2">
+                    <div class="border-b border-[#D4A8531F]">
+                        <h2 id="accordion-flush-heading-1">
+                            <button type="button"
+                                class="flex items-center justify-between w-full py-4 md:py-5 font-medium rtl:text-right text-left text-body gap-4 group"
+                                data-accordion-target="#accordion-flush-body-1" aria-expanded="false"
+                                aria-controls="accordion-flush-body-1">
+                                <span
+                                    class="text-[#F5EFE6] duration-300 font-[Manrope] text-sm md:text-[16px] leading-relaxed transition-colors group-hover:text-[#F2C36B]">
+                                    Sizda vegetarian yoki vegan variantlari bormi?
+                                </span>
+                                <svg data-accordion-icon
+                                    class="w-5 h-5 text-[#F2C36B] transition-transform duration-300 shrink-0"
+                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m19 9-7 7-7-7" />
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-body-1" class="hidden" aria-labelledby="accordion-flush-heading-1">
+                            <div class="pb-5 pt-2 text-body">
+                                <p class="text-[#F5EFE6]/80 font-[Playfair Display] text-[15px] leading-loose italic">
+                                    <strong
+                                        class="text-[#F2C36B] block mb-1 not-italic font-[Manrope] text-xs uppercase tracking-wider">Veganlar
+                                        uchun:</strong>
+                                    Yangi uzilgan sabzavotlar, za'faron va maxsus o‘tlar bilan pishirilgan olovli
+                                    taomlarimiz hamda tabiiy ziravorli salatlarimiz to‘liq o‘simlik asosida
+                                    tayyorlanadi.
+                                    <br><br>
+                                    <strong
+                                        class="text-[#F2C36B] block mb-1 not-italic font-[Manrope] text-xs uppercase tracking-wider">Vegetarianlar
+                                        uchun:</strong>
+                                    Premium pishloqlar, sariyog‘ va o‘tin pechida tayyorlangan maxsus sabzavotli
+                                    garnirlarimiz mavjud.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-b border-[#D4A8531F]">
+                        <h2 id="accordion-flush-heading-2">
+                            <button type="button"
+                                class="flex items-center justify-between w-full py-4 md:py-5 font-medium rtl:text-right text-left text-body gap-4 group"
+                                data-accordion-target="#accordion-flush-body-2" aria-expanded="false"
+                                aria-controls="accordion-flush-body-2">
+                                <span
+                                    class="text-[#F5EFE6] font-[Manrope] duration-300 text-sm md:text-[16px] leading-relaxed transition-colors group-hover:text-[#F2C36B]">
+                                    Sizning band qilish siyosatingiz qanday?
+                                </span>
+                                <svg data-accordion-icon
+                                    class="w-5 h-5 text-[#F2C36B] transition-transform duration-300 shrink-0"
+                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m19 9-7 7-7-7" />
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-body-2" class="hidden" aria-labelledby="accordion-flush-heading-2">
+                            <div class="pb-5 pt-2 text-body">
+                                <p
+                                    class="text-[#F5EFE6]/80 font-[Playfair Display] text-[15px] leading-loose italic space-y-3">
+                                    <strong
+                                        class="text-[#F2C36B] block mb-1 not-italic font-[Manrope] text-xs uppercase tracking-wider">Oldindan
+                                        band qilish:</strong>
+                                    Joylarni veb-saytimiz, telefon yoki ijtimoiy tarmoqlar orqali kamida 1-2 kun oldin
+                                    bron qilish tavsiya etiladi.
+                                    <br><br>
+                                    <strong
+                                        class="text-[#F2C36B] block mb-1 not-italic font-[Manrope] text-xs uppercase tracking-wider">Kechikish
+                                        muddati:</strong>
+                                    Restoranimiz siz band qilgan vaqtdan boshlab joyni 15 daqiqa davomida saqlab turadi.
+                                    Agar kechikadigan bo'lsangiz, iltimos, bizni ogohlantiring. Aks holda bron bekor
+                                    qilinishi mumkin.
+                                    <br><br>
+                                    <strong
+                                        class="text-[#F2C36B] block mb-1 not-italic font-[Manrope] text-xs uppercase tracking-wider">Katta
+                                        guruhlar (6 kishidan ortiq):</strong>
+                                    Katta jamoalar uchun joy band qilishda menyu oldindan kelishiladi va qisman oldindan
+                                    to'lov (depozit) talab qilinishi mumkin.
+                                    <br><br>
+                                    <strong
+                                        class="text-[#F2C36B] block mb-1 not-italic font-[Manrope] text-xs uppercase tracking-wider">Bekor
+                                        qilish:</strong>
+                                    Agar rejalaringiz o'zgarsa, bronni kamida 3 soat oldin bekor qilishingizni yoki
+                                    vaqtini o'zgartirishingizni so'raymiz.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-b border-[#D4A8531F]">
+                        <h2 id="accordion-flush-heading-3">
+                            <button type="button"
+                                class="flex items-center justify-between w-full py-4 md:py-5 font-medium rtl:text-right text-left text-body gap-4 group"
+                                data-accordion-target="#accordion-flush-body-3" aria-expanded="false"
+                                aria-controls="accordion-flush-body-3">
+                                <span
+                                    class="text-[#F5EFE6] font-[Manrope] text-sm md:text-[16px] leading-relaxed transition-colors duration-300 group-hover:text-[#F2C36B]">
+                                    Maxsus kiyim kodi bormi?
+                                </span>
+                                <svg data-accordion-icon
+                                    class="w-5 h-5 text-[#F2C36B] transition-transform duration-300 shrink-0"
+                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m19 9-7 7-7-7" />
+                                </svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-flush-body-3" class="hidden" aria-labelledby="accordion-flush-heading-3">
+                            <div class="pb-5 pt-2 text-body">
+                                <p class="text-[#F5EFE6]/80 font-[Playfair Display] text-[15px] leading-loose italic">
+                                    <strong
+                                        class="text-[#F2C36B] block mb-1 not-italic font-[Manrope] text-xs uppercase tracking-wider">Tavsiya
+                                        etiladi:</strong>
+                                    Nafis ko‘ylaklar, kostyum-shim, shim va shim bilan mos tushadigan ko‘ylak (rubashka)
+                                    yoki zamonaviy bluzkalar.
+                                    <br><br>
+                                    <strong
+                                        class="text-[#F2C36B] block mb-1 not-italic font-[Manrope] text-xs uppercase tracking-wider">Cheklovlar:</strong>
+                                    Restoranga sport kiyimlari (sportivka), plyaj shortilari, ochiq shippaklar va uy
+                                    kiyimlarida kelish tavsiya etilmaydi.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-[60px] bg-[#131315]">
+            <div class="w-full max-w-[1232px] mx-auto w-full px-4 md:px-0">
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-0 overflow-hidden shadow-2xl">
+
+                    <div class="relative group aspect-square overflow-hidden bg-[#1a1a1a]">
+                        <img src="./img/q.choy.png" alt="Kokteyl"
+                            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 filter brightness-90 group-hover:brightness-100">
+                        <div
+                            class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500">
+                        </div>
+                    </div>
+
+                    <div class="relative group aspect-square overflow-hidden bg-[#1a1a1a]">
+                        <img src="./img/q.meva.png" alt="Eksklyuziv taom"
+                            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 filter brightness-90 group-hover:brightness-100">
+                        <div
+                            class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500">
+                        </div>
+                    </div>
+
+                    <div class="relative group aspect-square overflow-hidden bg-[#1a1a1a]">
+                        <img src="./img/tandir.png" alt="O'tin pechi"
+                            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 filter brightness-90 group-hover:brightness-100">
+                        <div
+                            class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500">
+                        </div>
+                    </div>
+
+                    <div class="relative group aspect-square overflow-hidden bg-[#1a1a1a]">
+                        <img src="./img/r.stol.png" alt="Restoran muhiti"
+                            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 filter brightness-90 group-hover:brightness-100">
+                        <div
+                            class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500">
+                        </div>
+                    </div>
+
+                    <div class="relative group aspect-square overflow-hidden bg-[#1a1a1a]">
+                        <img src="./img/m.chooy.png" alt="Za'faron ziravori"
+                            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 filter brightness-90 group-hover:brightness-100">
+                        <div
+                            class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500">
+                        </div>
+                    </div>
+
+                    <div class="relative group aspect-square overflow-hidden bg-[#1a1a1a]">
+                        <img src="./img/kirirsh.png" alt="Saffron & Ember kirish qismi"
+                            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 filter brightness-90 group-hover:brightness-100">
+                        <div
+                            class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-[#0E0E10] py-16 px-4 md:px-8 flex items-center justify-center min-h-screen">
+            <div
+                class="w-full max-w-[1140px] bg-[#141416] border border-[#D4A853] rounded-[20px] duration-[0.3s] hover:shadow-[#D4A8534D] shadow-2xl p-6 md:p-12 mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                    <div class="lg:col-span-6 text-left">
+                        <p class="text-[#D4A853] text-xs sm:text-sm  tracking-[0.2em] uppercase mb-4 font-[Manrope]">
+                            STOLINGIZNI BAND QILING
+                        </p>
+                        <h2
+                            class="font-[Manrope] text-[48px] text-white text-3xl sm:text-4xl lg:text-[46px]  leading-[1.15] mb-4">
+                            Zulmatda bir stol sizni kutmoqda
+                        </h2>
+                        <p
+                            class="font-[Manrope] text-[#8E8D94] text-sm sm:text-base font-light leading-relaxed mb-8 max-w-[460px]">
+                            Hissiy tatib ko‘rish menyusi orqali sayohatingizni ta'minlang. Har kecha cheklangan o‘rinlar
+                            mavjud.
+                        </p>
+
+                        <a href="tel:+1555098FIRE"
+                            class="inline-flex items-center gap-3 text-[#D4A853] hover:text-[#E8734A] transition-colors text-base sm:text-lg font-medium group font-[Manrope]">
+                            <svg class="w-5 h-5 transition-transform group-hover:scale-110" fill="none"
+                                stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://w3.org">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.802-5.194-4.174-7-7l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z">
+                                </path>
+                            </svg>
+                            +1 (555) 098-FIRE
+                        </a>
+                    </div>
+
+                    <div class="lg:col-span-6 w-full">
+                        <form class="space-y-5">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+                                <div>
+                                    <label
+                                        class="block text-[#6E6D75] text-[11px] uppercase tracking-wider mb-2 font-medium font-[Manrope]">Sana</label>
+                                    <input type=""
+                                        class="w-full bg-[#1A1A1E] border border-[#2A2A2E] focus:border-[#D4A853]  text-gray-300 rounded-[8px] px-4 py-3 text-sm transition-colors font-[Manrope]"
+                                        required>
+                                </div>
+
+                                <div>
+                                    <label
+                                        class="block text-[#6E6D75] text-[11px] uppercase tracking-wider mb-2 font-medium font-[Manrope]">Mehmonlar</label>
+                                    <select
+                                        class="w-full bg-[#1A1A1E] border border-[#2A2A2E] focus:border-[#D4A853] focus:ring-0 text-gray-300 rounded-[8px] px-4 py-3 text-sm transition-colors font-[Manrope]">
+                                        <option>1 kishi</option>
+                                        <option selected>2 kishi</option>
+                                        <option>3 kishi</option>
+                                        <option>4 kishi</option>
+                                        <option>5+ kishi</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="text-left">
+                                <label
+                                    class="block text-[#6E6D75] text-[11px] uppercase tracking-wider mb-2 font-medium font-[Manrope]">Email
+                                    Manzili</label>
+                                <input type="email" placeholder="Sizning email manzilingiz"
+                                    class="w-full bg-[#1A1A1E] border border-[#2A2A2E] focus:border-[#D4A853] focus:ring-0 text-gray-300 rounded-[8px] px-4 py-3 text-sm transition-colors placeholder-[#4E4D54] font-[Manrope]"
+                                    required>
+                            </div>
+
+                            <button type="submit"
+                                class="w-full mt-4 flex items-center justify-center gap-2 bg-gradient-to-r from-[#E8734A] to-[#D4A853] hover:opacity-95 text-[#412D00] font-bold text-sm sm:text-base py-3.5 px-6 rounded-full transition-all duration-300 group shadow-lg font-[Manrope]">
+                                Hozir band qilish
+                                <svg class="w-4 h-4 transition-transform " fill="none" stroke="currentColor"
+                                    stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://w3.org">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M13.5 4.5l6 6m0 0l-6 6m6-6H3"></path>
+                                </svg>
+                            </button>
+
+                            <p class="text-[#4E4D54] text-[11px] text-center mt-4 leading-normal font-[Manrope]">
+                                Band qilish orqali siz bizning 48 soatlik bekor qilish siyosatimizga rozilik bildirasiz.
+                            </p>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <footer
+            class="bg-[#0A0A0C] text-[#8E8D94] font-[Manrope] pt-16 pb-8 px-4 sm:px-6 lg:px-8 border-t border-[#1A1A1E]">
+            <div class="max-w-[1232px] mx-auto w-full">
+                <div
+                    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-8 md:gap-12 pb-12 text-center sm:text-left">
+                    <div class="md:col-span-4 flex flex-col items-center sm:items-start">
+                        <img class="pb-3" src="./img/Container.svg" alt="">
+                        <p class="text-sm leading-relaxed max-w-[280px]">
+                            Kinematografik nuar gastronomiyasi. Olov va atmosfera mahorati.
+                        </p>
+                    </div>
+
+                    <div class="md:col-span-3">
+                        <h3 class="text-white text-xs font-semibold tracking-[0.2em] uppercase mb-5">
+                            Tadqiq eting
+                        </h3>
+                        <ul class="space-y-3 text-sm">
+                            <li><a href=""
+                                    class="hover:text-[#D4A853] font-[Manrope] text-[#6B6862] text-[16px] transition-colors duration-200">Bizning
+                                    menyular</a></li>
+                            <li><a href=""
+                                    class="hover:text-[#D4A853] font-[Manrope] text-[#6B6862] text-[16px] transition-colors duration-200">Oshxona</a>
+                            </li>
+                            <li><a href=""
+                                    class="hover:text-[#D4A853] font-[Manrope] text-[#6B6862] text-[16px] transition-colors duration-200">Xususiy
+                                    tadbirlar</a></li>
+                            <li><a href=""
+                                    class="hover:text-[#D4A853] font-[Manrope] text-[#6B6862] text-[16px] transition-colors duration-200">Yerto‘la
+                                    ro‘yxati</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="md:col-span-3">
+                        <h3 class="text-white text-xs font-semibold tracking-[0.2em] uppercase mb-5">
+                            Tashrif buyuring
+                        </h3>
+                        <div class="space-y-3 text-sm leading-relaxed">
+                            <p class="font-[Manrope] text-[#6B6862] text-[16px]">
+                                1248 Obsidian Avenue<br>
+                                London, EC1A 4BB
+                            </p>
+                            <p class=" font-[Manrope] text-[#6B6862] text-[16px] pt-1">
+                                Sek - Shan: 18:00 - 23:00
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-2 flex flex-col items-center sm:items-start">
+                        <h3 class="text-white text-xs font-semibold tracking-[0.2em] uppercase mb-5">
+                            Kuzating
+                        </h3>
+                        <div class="flex space-x-3">
+                            <a href=""
+                                class="w-9 h-9 rounded-full bg-[#141416] border border-[#222224] flex items-center justify-center text-gray-400 hover:text-white hover:border-gray-500 transition-all duration-300">
+                                <img src="./img/Link.png" alt="">
+                            </a>
+                            <a href=""
+                                class="w-9 h-9 rounded-full bg-[#141416] border border-[#222224] flex items-center justify-center text-gray-400 hover:text-white hover:border-gray-500 transition-all duration-300">
+                                <img src="./img/Link (1).png" alt="">
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div
+                    class="border-t border-[#16161A] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-600">
+                    <p class="text-center sm:text-left">
+                        © 2024 Saffron & Ember. Kinematografik nuar gastronomiyasi.
+                    </p>
+                    <div class="flex space-x-6">
+                        <a href="" class="hover:text-gray-400 transition-colors duration-200">Maxfiylik siyosati</a>
+                        <a href="" class="hover:text-gray-400 transition-colors duration-200">Xizmat ko‘rsatish
+                            shartlari</a>
+                    </div>
+                </div>
+
+            </div>
+        </footer>
+
+        <script>
+            document.getElementById('playBtn').addEventListener('click', function () {
+                const video = document.querySelector('video');
+                if (video.requestFullscreen) {
+                    video.requestFullscreen();
+                }
+                video.play();
+            });
+        </script>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+
+</body>
+
+</html>
