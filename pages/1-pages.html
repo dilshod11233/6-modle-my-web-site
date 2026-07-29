@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <header class="p-3  bg-[black] md:p-[20px]">
+        <div class="container items-center flex justify-between max-w-[1232px] mx-auto w-full relative">
+            <a href="../index.html" class="logo ">
+                <img data-aos="fade-right" src="../img/Text.svg" alt="Logo" class="h-8 md:h-auto">
+            </a>
+
+            <ul id="nav-menu"
+                class=" hidden fixed inset-0 bg-[#1a1a1a] flex-col items-center justify-center space-y-6 z-40 md:relative md:inset-auto md:bg-transparent md:flex md:flex-row md:space-y-0 md:space-x-8">
+                <li class="inline-block group relative">
+                    <a data-aos="fade-right" href="#"
+                        class="text-18px md:text-[16px] hover:text-[#F2C36B] text-[#D2C5B2] font-medium tracking-wide">MENY</a>
+                    <span
+                        class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                </li>
+                <li class="inline-block group relative">
+                    <a data-aos="fade-right" href="#"
+                        class="text-18px md:text-[16px] hover:text-[#F2C36B] text-[#D2C5B2] font-medium tracking-wide">TAJRIBA</a>
+                    <span
+                        class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                </li>
+                <li class="inline-block group relative">
+                    <a data-aos="fade-right" href="#"
+                        class="text-18px md:text-[16px] hover:text-[#F2C36B] text-[#D2C5B2] font-medium tracking-wide">SHAXSIY
+                        ZIYOFAT</a>
+                    <span
+                        class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                </li>
+                <li class="inline-block group relative">
+                    <a data-aos="fade-right" href="#"
+                        class="text-18px md:text-[16px] hover:text-[#F2C36B] text-[#D2C5B2] font-medium tracking-wide">GALEREYA</a>
+                    <span
+                        class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                </li>
+            </ul>
+            <div class="text-center hidden max-[768px]:inline-block">
+                <button
+                    class="inline-flex  rotate-[90deg] text-[25px] items-center justify-center text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+                    type="button" data-drawer-target="drawer-disable-body-scrolling"
+                    data-drawer-show="drawer-disable-body-scrolling" data-drawer-body-scrolling="false"
+                    aria-controls="drawer-disable-body-scrolling">
+                    |||
+                </button>
+            </div>
+            <div id="drawer-disable-body-scrolling"
+                class="fixed rounded-[10px]  mt-[-2px] border-[1px] max-[600px]! top-0 left-0 z-40 h-screen backdrop-blur-[8px] p-5 overflow-y-auto transition-transform -translate-x-full  w-90 h-500 border-e border-default"
+                tabindex="-1" aria-labelledby="drawer-disable-body-scrolling-label">
+                <div class="border-default pb-4 flex items-center">
+                    <button type="button" data-drawer-hide="drawer-disable-body-scrolling"
+                        aria-controls="drawer-disable-body-scrolling"
+                        class="text-body bg-transparent hover:text-heading hover:bg-neutral-tertiary rounded-base w-9 h-9 absolute top-2.5 end-2.5 flex items-center justify-center">
+                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18 17.94 6M18 18 6.06 6" />
+                        </svg>
+                        <span class="sr-only">Close menu</span>
+                    </button>
+                </div>
+                <div class="py-5 overflow-y-auto">
+                    <ul class="mt-[130px] ml-[30px]">
+                        <li class="py-3">
+                            <a href=""
+                                class="text-[42px]  pl-[60px] duration-[0.3s] hover:text-[#F2C36B] text-[#D2C5B2] font-[Playfair Display] tracking-wide">MENY</a>
+                            <span
+                                class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                        </li>
+                        <li class="py-3">
+                            <a href=""
+                                class="text-[42px] pl-[50px]  duration-[0.3s] hover:text-[#F2C36B] text-[#D2C5B2] font-[Playfair Display] tracking-wide">TAJRIBA</a>
+                            <span
+                                class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                        </li>
+                        <li class="py-3">
+                            <a href=""
+                                class="text-[42px] pt-[31px]  duration-[0.3s] hover:text-[#F2C36B] text-[#D2C5B2] font-[Playfair Display] tracking-wide">XUSUSIY
+                                TADBIRLAR</a>
+                            <span
+                                class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                        </li>
+                        <li class="py-3">
+                            <a href=""
+                                class="text-[42px] pl-[50px]  duration-[0.3s] hover:text-[#F2C36B] text-[#D2C5B2] font-[Playfair Display] tracking-wide">GALEREYA</a>
+                            <span
+                                class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <button data-modal-target="crud-modal" data-modal-toggle="crud-modal"
+                    class="text-white py-[10px]! px-[20px] ml-15 max-w-[300px]  bg-linear-65 from-[#E8734A] to-[#D4A853] rounded-[10px]  focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+                    type="button">
+                    Stol band qilish
+                </button>
+
+
+            </div>
+
+
+            <button data-aos="fade-right" data-modal-target="crud-modal" data-modal-toggle="crud-modal"
+                class="text-white   bg-linear-65 from-[#E8734A] to-[#D4A853] rounded-[9999px] box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+                type="button">
+                Stol band qilish
+            </button>
+
+            <div id="crud-modal" tabindex="-1" aria-hidden="true"
+                class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                <div class="relative p-4 w-full max-w-md max-h-full">
+                    <div class="relative bg-linear-65 from-[#E8734A] to-[#D4A853]  rounded-[10px] shadow-sm p-4 md:p-6">
+                        <div class="flex items-center justify-between  border-default pb-4 md:pb-5">
+                            <h3 class="text-lg text-white font-medium text-heading">
+                                Stol band qilish
+                            </h3>
+                            <button type="button"
+                                class="text-body bg-transparent hover:bg-neutral-tertiary hover:text-heading rounded-base text-sm w-9 h-9 ms-auto inline-flex justify-center items-center"
+                                data-modal-hide="crud-modal">
+                                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6" />
+                                </svg>
+                                <span class="sr-only">Close modal</span>
+                            </button>
+                        </div>
+
+                        <form action="#">
+                            <div class="grid gap-4 grid-cols-2 py-4 md:py-6">
+                                <div class="col-span-2">
+                                    <label for="name"
+                                        class="block text-white mb-2.5 text-sm font-medium text-heading">Ismizngiz</label>
+                                    <input type="text" name="name" id="name"
+                                        class="bg-neutral-secondary-medium border-none rounded-[10px] text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+                                        placeholder="Ismizngizni kiriting" required="">
+                                </div>
+                                <div class="col-span-2 sm:col-span-1">
+                                    <label for="price"
+                                        class="block mb-2.5 text-white text-sm font-medium text-heading">Joy
+                                        narxi</label>
+                                    <input type="number" name="price" id="price"
+                                        class="bg-neutral-secondary-medium rounded-[10px] border-none text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+                                        placeholder="$2999" required="">
+                                </div>
+                                <div class="col-span-2 sm:col-span-1">
+                                    <label for="category"
+                                        class="block text-white mb-2.5 text-sm font-medium text-heading">Joyni
+                                        tanlang</label>
+                                    <select id="category"
+                                        class="block w-full px-3 py-2.5 bg-white border-none rounded-[10px] border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand px-3 py-2.5 shadow-xs placeholder:text-body">
+                                        <option selected="">Oilaviy joy</option>
+                                        <option value="">Ikkishilik joy</option>
+                                        <option value="PC">Tug'ulgan kun uchun joy</option>
+                                    </select>
+                                </div>
+                                <div class="col-span-2">
+                                    <label for="description"
+                                        class="block mb-2.5 text-sm font-medium text-white text-heading">Izoh</label>
+                                    <textarea id="description" rows="4"
+                                        class="block bg-white border-none rounded-[10px] border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full p-3.5 shadow-xs placeholder:text-body"
+                                        placeholder="Biz haqimizda Izoh"></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="">
+            <div class="relative w-full h-screen bg-cover bg-center flex items-center justify-center overflow-hidden"
+                style="background-image: url('../2-pages-img/bg-hero.png');">
+                <div class="absolute inset-0 bg-black/50"></div>
+                <div class="relative z-10 text-center px-4 max-w-3xl select-none animate-fade-in">
+                    <div
+                        class="flex justify-center items-center gap-4 text-xs md:text-sm tracking-[0.2em] text-amber-100/60 uppercase mb-4">
+                        <span
+                            class="font-[Liberation Serif] hover:text-[#ffffff] text-[12px] text-[#D4A853]">Restoran</span>
+                        <span class="w-0.5 text-[#D4A853] hover:text-[#A8A5A0E5] duration-200 rounded-full">/</span>
+                        <span
+                            class="font-[Liberation Serif] hover:text-[#ffffff] duration-200 text-[12px] text-[#D4A853]">Chiroyli
+                            Lahzalar</span>
+                    </div>
+                    <h1
+                        class="font-[Literata] hover:text-[#D4A853] duration-400 text-[96px] text-5xl md:text-7xl lg:text-8xl text-stone-100 font-medium tracking-wide mb-6 leading-tight drop-shadow-lg">
+                        Bizning <br class="md:hidden"> Taomnoma
+                    </h1>
+                    <p
+                        class="font-[Liberation Serif] text-[18px]  italic text-sm md:text-lg text-[#A8A5A0E5] tracking-[1px] hover:text-[#D4A853] duration-200 leading-relaxed">
+                        Har bitta taomda o'ziga xos mehr va takrorlanmas lazzatni his qiling
+                    </p>
+
+                </div>
+            </div>
+
+        </section>
+
+       
+    </main>
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800
+        });
+    </script>
+</body>
+
+</html>
