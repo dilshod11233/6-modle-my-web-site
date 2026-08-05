@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <header class="p-3  bg-[black] md:p-[20px]">
+        <div class="container  items-center flex justify-between max-w-[1072px] mx-auto w-full relative">
+            <a href="../index.html" class="logo ">
+                <img data-aos="fade-right" src="../img/Text.svg" alt="Logo" class="h-8 md:h-auto">
+            </a>
+
+            <ul id="nav-menu"
+                class=" hidden fixed inset-0 bg-[#1a1a1a] flex-col items-center justify-center space-y-6 z-40 md:relative md:inset-auto md:bg-transparent md:flex md:flex-row md:space-y-0 md:space-x-8">
+                <li class="inline-block group relative">
+                    <a data-aos="fade-right" href=""
+                        class="text-18px md:text-[16px] hover:text-[#F2C36B] text-[#D2C5B2] font-medium tracking-wide">MENY</a>
+                    <span
+                        class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                </li>
+                <li class="inline-block group relative">
+                    <a data-aos="fade-right" href="#"
+                        class="text-18px md:text-[16px] hover:text-[#F2C36B] text-[#D2C5B2] font-medium tracking-wide">TAJRIBA</a>
+                    <span
+                        class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                </li>
+                <li class="inline-block group relative">
+                    <a data-aos="fade-right" href="#"
+                        class="text-18px md:text-[16px] hover:text-[#F2C36B] text-[#D2C5B2] font-medium tracking-wide">SHAXSIY
+                        ZIYOFAT</a>
+                    <span
+                        class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                </li>
+                <li class="inline-block group relative">
+                    <a data-aos="fade-right" href="#"
+                        class="text-18px md:text-[16px] hover:text-[#F2C36B] text-[#D2C5B2] font-medium tracking-wide">GALEREYA</a>
+                    <span
+                        class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                </li>
+            </ul>
+            <div class="text-center hidden max-[768px]:inline-block">
+                <button
+                    class="inline-flex  rotate-[90deg] text-[25px] items-center justify-center text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+                    type="button" data-drawer-target="drawer-disable-body-scrolling"
+                    data-drawer-show="drawer-disable-body-scrolling" data-drawer-body-scrolling="false"
+                    aria-controls="drawer-disable-body-scrolling">
+                    |||
+                </button>
+            </div>
+            <div id="drawer-disable-body-scrolling"
+                class="fixed rounded-[10px]  mt-[-2px] border-[1px] max-[600px]! top-0 left-0 z-40 h-screen backdrop-blur-[8px] p-5 overflow-y-auto transition-transform -translate-x-full  w-90 h-500 border-e border-default"
+                tabindex="-1" aria-labelledby="drawer-disable-body-scrolling-label">
+                <div class="border-default pb-4 flex items-center">
+                    <button type="button" data-drawer-hide="drawer-disable-body-scrolling"
+                        aria-controls="drawer-disable-body-scrolling"
+                        class="text-body bg-transparent hover:text-heading hover:bg-neutral-tertiary rounded-base w-9 h-9 absolute top-2.5 end-2.5 flex items-center justify-center">
+                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18 17.94 6M18 18 6.06 6" />
+                        </svg>
+                        <span class="sr-only">Close menu</span>
+                    </button>
+                </div>
+                <div class="py-5 overflow-y-auto">
+                    <ul class="mt-[130px] ml-[30px]">
+                        <li class="py-3">
+                            <a href="../index.html"
+                                class="text-[42px]  pl-[60px] duration-[0.3s] hover:text-[#F2C36B] text-[#D2C5B2] font-[Playfair Display] tracking-wide">MENY</a>
+                            <span
+                                class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                        </li>
+                        <li class="py-3">
+                            <a href=""
+                                class="text-[42px] pl-[50px]  duration-[0.3s] hover:text-[#F2C36B] text-[#D2C5B2] font-[Playfair Display] tracking-wide">TAJRIBA</a>
+                            <span
+                                class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                        </li>
+                        <li class="py-3">
+                            <a href=""
+                                class="text-[42px] pt-[31px]  duration-[0.3s] hover:text-[#F2C36B] text-[#D2C5B2] font-[Playfair Display] tracking-wide">XUSUSIY
+                                TADBIRLAR</a>
+                            <span
+                                class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                        </li>
+                        <li class="py-3">
+                            <a href=""
+                                class="text-[42px] pl-[50px]  duration-[0.3s] hover:text-[#F2C36B] text-[#D2C5B2] font-[Playfair Display] tracking-wide">GALEREYA</a>
+                            <span
+                                class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <button data-modal-target="crud-modal" data-modal-toggle="crud-modal"
+                    class="text-white py-[10px]! px-[20px] ml-15 max-w-[300px]  bg-linear-65 from-[#E8734A] to-[#D4A853] rounded-[10px]  focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+                    type="button">
+                    Stol band qilish
+                </button>
+
+
+            </div>
+
+
+            <button data-aos="fade-right" data-modal-target="crud-modal" data-modal-toggle="crud-modal"
+                class="text-white   bg-linear-65 from-[#E8734A] to-[#D4A853] rounded-[9999px] box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+                type="button">
+                Stol band qilish
+            </button>
+
+            <div id="crud-modal" tabindex="-1" aria-hidden="true"
+                class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                <div class="relative p-4 w-full max-w-md max-h-full">
+                    <div class="relative bg-linear-65 from-[#E8734A] to-[#D4A853]  rounded-[10px] shadow-sm p-4 md:p-6">
+                        <div class="flex items-center justify-between  border-default pb-4 md:pb-5">
+                            <h3 class="text-lg text-white font-medium text-heading">
+                                Stol band qilish
+                            </h3>
+                            <button type="button"
+                                class="text-body bg-transparent hover:bg-neutral-tertiary hover:text-heading rounded-base text-sm w-9 h-9 ms-auto inline-flex justify-center items-center"
+                                data-modal-hide="crud-modal">
+                                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6" />
+                                </svg>
+                                <span class="sr-only">Close modal</span>
+                            </button>
+                        </div>
+
+                        <form action="#">
+                            <div class="grid gap-4 grid-cols-2 py-4 md:py-6">
+                                <div class="col-span-2">
+                                    <label for="name"
+                                        class="block text-white mb-2.5 text-sm font-medium text-heading">Ismizngiz</label>
+                                    <input type="text" name="name" id="name"
+                                        class="bg-neutral-secondary-medium border-none rounded-[10px] text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+                                        placeholder="Ismizngizni kiriting" required="">
+                                </div>
+                                <div class="col-span-2 sm:col-span-1">
+                                    <label for="price"
+                                        class="block mb-2.5 text-white text-sm font-medium text-heading">Joy
+                                        narxi</label>
+                                    <input type="number" name="price" id="price"
+                                        class="bg-neutral-secondary-medium rounded-[10px] border-none text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+                                        placeholder="$2999" required="">
+                                </div>
+                                <div class="col-span-2 sm:col-span-1">
+                                    <label for="category"
+                                        class="block text-white mb-2.5 text-sm font-medium text-heading">Joyni
+                                        tanlang</label>
+                                    <select id="category"
+                                        class="block w-full px-3 py-2.5 bg-white border-none rounded-[10px] border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand px-3 py-2.5 shadow-xs placeholder:text-body">
+                                        <option selected="">Oilaviy joy</option>
+                                        <option value="">Ikkishilik joy</option>
+                                        <option value="PC">Tug'ulgan kun uchun joy</option>
+                                    </select>
+                                </div>
+                                <div class="col-span-2">
+                                    <label for="description"
+                                        class="block mb-2.5 text-sm font-medium text-white text-heading">Izoh</label>
+                                    <textarea id="description" rows="4"
+                                        class="block bg-white border-none rounded-[10px] border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full p-3.5 shadow-xs placeholder:text-body"
+                                        placeholder="Biz haqimizda Izoh"></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section
+            class="relative h-[500px] w-full overflow-hidden bg-black text-white flex items-center justify-center text-center px-4">
+            <div class="absolute inset-0 z-0">
+                <img src="../3-pages-img/oshpaz.png" alt="Lazzat ortidagi ustalar"
+                    class="w-full h-full object-cover object-center opacity-40 mix-blend-luminosity" />
+                <div class="absolute inset-0 "></div>
+            </div>
+
+            <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center justify-center">
+                <h2 class="text-[72px] md:text-6xl font-[Manrope] tracking-wide mb-6 leading-tight">
+                    Lazzat ortidagi ustalar
+                </h2>
+                <p
+                    class="text-sm md:text-base text-gray-300 font-light max-w-2xl leading-relaxed tracking-normal font-sans">
+                    Qadimiy uslublar zamonaviy innovatsiyalar bilan uchrashadigan maskan.<br class="hidden md:inline" />
+                    Sayohatining har bir lahzasini mahorat bilan boshqarayotgan ijodkorlar bilan tanishing.
+                </p>
+
+            </div>
+        </section>
+
+        <section class="bg-[#0b0c10] text-white py-16 px-4  ">
+            <div
+                class="max-w-[1232px]! md:px-12 lg:px-24 mx-auto w-full flex flex-col md:flex-row items-center justify-center gap-20 min-h-screen">
+                <div class=" mx-auto md:w-1/2 flex justify-center md:justify-end">
+                    <div
+                        class="relative w-full max-w-[450px] aspect-[4/5] overflow-hidden rounded-sm bg-zinc-900 border border-zinc-800">
+                        <img src="../3-pages-img/bshopz.svg" alt="Julian Saint-Clair"
+                            class="w-full h-full object-cover object-center hover:grayscale-0 transition duration-500" />
+                    </div>
+                </div>
+
+                <div class="w-full md:w-1/2 flex flex-col justify-center max-w-[550px]">
+                    <span class="text-[#c5a880] text-xs font-semibold tracking-[0.2em] uppercase mb-3">
+                        Bosh oshpaz
+                    </span>
+
+                    <h1 class="text-4xl md:text-5xl font-serif font-light tracking-wide mb-6">
+                        Julian Saint-Clair
+                    </h1>
+
+                    <p class="text-zinc-400 text-sm md:text-base font-light leading-relaxed mb-10">
+                        Uchta qit'ada faoliyat yuritgan Chef Julian Saffron & Ember ga "Atmosferik Gastronomiya"
+                        falsafasini
+                        olib kirdi. Uning yondashuvi tarelikani xotiralar tuvalidek ko'radi, u yerda tutun, olov va
+                        noyob
+                        ziravorlar chuqur hissiy rezonans uyg'otadi.
+                    </p>
+
+                    <div class="grid grid-cols-3 gap-4 border-b border-zinc-800 pb-8 mb-8">
+                        <div>
+                            <div class="text-[#c5a880] text-xl md:text-2xl font-serif mb-1">28</div>
+                            <div class="text-zinc-500 text-[10px] md:text-xs tracking-wider uppercase">Yillik tajriba
+                            </div>
+                        </div>
+                        <div>
+                            <div class="text-[#c5a880] text-xl md:text-2xl font-serif mb-1">3</div>
+                            <div class="text-zinc-500 text-[10px] md:text-xs tracking-wider uppercase">Xalqaro mukofot
+                            </div>
+                        </div>
+                        <div>
+                            <div class="text-[#c5a880] text-xl md:text-2xl font-serif mb-1">40+</div>
+                            <div class="text-zinc-500 text-[10px] md:text-xs tracking-wider uppercase">Mualliflik taomi
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 mb-10 text-sm text-zinc-300">
+                        <div class="flex items-center gap-3">
+                            <svg class="w-4 h-4 text-[#c5a880] shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                            <span>Michelin yulduzi g'olibi (2020-2023)</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <svg class="w-4 h-4 text-[#c5a880] shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8h2.5V2c-2.76 0-5 2.24-5 4z" />
+                            </svg>
+                            <span>Yilning oshpazlik innovatori</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between gap-4 mt-2">
+                        <button
+                            class="px-6 py-3 border border-[#c5a880] text-[#c5a880] rounded-full text-xs font-medium tracking-wider hover:bg-[#c5a880] hover:text-black transition duration-300 uppercase">
+                            Oshpaz stolini band qilish
+                        </button>
+                        <span
+                            class="font-serif italic text-[#c5a880] opacity-80 tracking-wide text-lg md:text-xl selection:bg-transparent">
+                            Julian S. Clair
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800
+        });
+    </script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
