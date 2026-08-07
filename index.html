@@ -111,68 +111,91 @@
 
 
             <button data-aos="fade-right" data-modal-target="crud-modal" data-modal-toggle="crud-modal"
-                class="text-white   bg-linear-65 from-[#E8734A] to-[#D4A853] rounded-[9999px] box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+                class="text-white bg-gradient-to-r from-[#E8734A] to-[#D4A853] hover:opacity-90  transition-all rounded-full font-medium leading-5 text-sm px-5 py-3 shadow-md focus:outline-none focus:ring-4 focus:ring-[#E8734A]/50 block mx-auto sm:mx-0"
                 type="button">
                 Stol band qilish
             </button>
 
+            <!-- Modal Oynasi (Tashqi qatlam) -->
             <div id="crud-modal" tabindex="-1" aria-hidden="true"
-                class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                <div class="relative p-4 w-full max-w-md max-h-full">
-                    <div class="relative bg-linear-65 from-[#E8734A] to-[#D4A853]  rounded-[10px] shadow-sm p-4 md:p-6">
-                        <div class="flex items-center justify-between  border-default pb-4 md:pb-5">
-                            <h3 class="text-lg text-white font-medium text-heading">
+                class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-full max-h-full bg-black/60 backdrop-blur-sm p-4">
+
+                <!-- Modal Konteyneri -->
+                <div class="relative w-full max-w-md max-h-full my-auto">
+                    <!-- Modal kontenti -->
+                    <div
+                        class="relative bg-gradient-to-br from-[#E8734A] to-[#D4A853] rounded-2xl shadow-2xl p-5 md:p-6 border border-white/10">
+
+                        <!-- Modal Sarlavhasi (Header) -->
+                        <div class="flex items-center justify-between border-b border-white/20 pb-4">
+                            <h3 class="text-xl text-white font-semibold tracking-wide">
                                 Stol band qilish
                             </h3>
                             <button type="button"
-                                class="text-body bg-transparent hover:bg-neutral-tertiary hover:text-heading rounded-base text-sm w-9 h-9 ms-auto inline-flex justify-center items-center"
+                                class="text-white/80 bg-white/10 hover:bg-white/20 hover:text-white rounded-xl text-sm w-9 h-9 inline-flex justify-center items-center transition-colors"
                                 data-modal-hide="crud-modal">
                                 <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                                     height="24" fill="none" viewBox="0 0 24 24">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6" />
                                 </svg>
-                                <span class="sr-only">Close modal</span>
+                                <span class="sr-only">Yopish</span>
                             </button>
                         </div>
 
-                        <form action="#">
-                            <div class="grid gap-4 grid-cols-2 py-4 md:py-6">
+                        <!-- Modal Formasi -->
+                        <form action="#" class="mt-4">
+                            <div class="grid gap-4 grid-cols-2">
+
+                                <!-- Ism kiritish (To'liq qator) -->
                                 <div class="col-span-2">
-                                    <label for="name"
-                                        class="block text-white mb-2.5 text-sm font-medium text-heading">Ismizngiz</label>
+                                    <label for="name" class="block text-white mb-2 text-sm font-medium">Ismingiz</label>
                                     <input type="text" name="name" id="name"
-                                        class="bg-neutral-secondary-medium border-none rounded-[10px] text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
-                                        placeholder="Ismizngizni kiriting" required="">
+                                        class="bg-white/15 border border-white/20 rounded-xl text-white text-sm focus:ring-2 focus:ring-white focus:border-transparent block w-full px-3.5 py-2.5 shadow-sm placeholder:text-white/60 outline-none transition-all"
+                                        placeholder="Ismingizni kiriting" required>
                                 </div>
+
+                                <!-- Joy narxi (Mobil qurilmada to'liq qator, sm ekrandan boshlab yarim qator) -->
                                 <div class="col-span-2 sm:col-span-1">
-                                    <label for="price"
-                                        class="block mb-2.5 text-white text-sm font-medium text-heading">Joy
+                                    <label for="price" class="block text-white mb-2 text-sm font-medium">Joy
                                         narxi</label>
                                     <input type="number" name="price" id="price"
-                                        class="bg-neutral-secondary-medium rounded-[10px] border-none text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
-                                        placeholder="$2999" required="">
+                                        class="bg-white/15 border border-white/20 rounded-xl text-white text-sm focus:ring-2 focus:ring-white focus:border-transparent block w-full px-3.5 py-2.5 shadow-sm placeholder:text-white/60 outline-none transition-all"
+                                        placeholder="$2999" required>
                                 </div>
+
+                                <!-- Joyni tanlash (Mobil qurilmada to'liq qator, sm ekrandan boshlab yarim qator) -->
                                 <div class="col-span-2 sm:col-span-1">
-                                    <label for="category"
-                                        class="block text-white mb-2.5 text-sm font-medium text-heading">Joyni
+                                    <label for="category" class="block text-white mb-2 text-sm font-medium">Joyni
                                         tanlang</label>
                                     <select id="category"
-                                        class="block w-full px-3 py-2.5 bg-white border-none rounded-[10px] border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand px-3 py-2.5 shadow-xs placeholder:text-body">
-                                        <option selected="">Oilaviy joy</option>
-                                        <option value="">Ikkishilik joy</option>
-                                        <option value="PC">Tug'ulgan kun uchun joy</option>
+                                        class="bg-white border-none rounded-xl text-gray-800 text-sm focus:ring-2 focus:ring-[#E8734A] block w-full px-3.5 py-2.5 shadow-sm outline-none transition-all appearance-none cursor-pointer">
+                                        <option selected>Oilaviy joy</option>
+                                        <option value="couple">Ikkishilik joy</option>
+                                        <option value="birthday">Tug'ilgan kun uchun joy</option>
                                     </select>
                                 </div>
+
+                                <!-- Izoh (To'liq qator) -->
                                 <div class="col-span-2">
                                     <label for="description"
-                                        class="block mb-2.5 text-sm font-medium text-white text-heading">Izoh</label>
+                                        class="block text-white mb-2 text-sm font-medium">Izoh</label>
                                     <textarea id="description" rows="4"
-                                        class="block bg-white border-none rounded-[10px] border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full p-3.5 shadow-xs placeholder:text-body"
-                                        placeholder="Biz haqimizda Izoh"></textarea>
+                                        class="bg-white border-none rounded-xl text-gray-800 text-sm focus:ring-2 focus:ring-[#E8734A] block w-full p-3.5 shadow-sm placeholder:text-gray-400 outline-none transition-all resize-none"
+                                        placeholder="Biz haqimizda izoh qoldiring..."></textarea>
                                 </div>
+
+                                <!-- Tasdiqlash tugmasi (Yangi qo'shildi - Formani yakunlash uchun) -->
+                                <div class="col-span-2 mt-2">
+                                    <button type="submit"
+                                        class="w-full bg-white text-[#E8734A] hover:bg-white/90 active:scale-[0.99] font-semibold rounded-xl text-sm px-5 py-3 shadow-md transition-all">
+                                        Band qilishni tasdiqlash
+                                    </button>
+                                </div>
+
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>
@@ -786,9 +809,13 @@
 
         <section class="py-[60px] bg-[#131315]">
             <div class="w-full max-w-[1232px] mx-auto w-full px-4 md:px-0">
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-0 overflow-hidden shadow-2xl">
+                <div class="grid relative grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-0 overflow-hidden shadow-2xl">
 
-                    <div class="relative group aspect-square overflow-hidden bg-[#1a1a1a]">
+                    <div class="relative group max-w-aspect-square overflow-hidden bg-[#1a1a1a]">
+                        <div
+                            class="overlay w-full bg-black/20 backdrop-blur-[2px] opacity-0 flex items-center justify-center hover:opacity-100 duration-400">
+                            <i class="fa-brands fa-instagram" style="color: rgb(186, 43, 0);"></i>
+                        </div>
                         <img data-aos="zoom-out-down" src="./img/q.choy.png" alt="Kokteyl"
                             class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 filter brightness-90 group-hover:brightness-100">
                         <div
