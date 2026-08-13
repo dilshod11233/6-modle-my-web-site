@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+            background: #0b0b0d;
+        }
+
+
+        /* ======================================
+           INSTAGRAM ICON
+        ====================================== */
+
+        .instagram-box {
+            opacity: 0;
+            transform:
+                translate(-50%, -50%) scale(0.5);
+
+            pointer-events: none;
+
+            transition:
+                opacity 0.3s ease,
+                transform 0.3s ease;
+        }
+
+
+        /* Card hover bo'lganda icon markazdan chiqadi */
+
+        .wine-card:hover .instagram-box {
+            opacity: 1;
+
+            transform:
+                translate(-50%, -50%) scale(1);
+
+            pointer-events: auto;
+        }
+
+
+        /* ======================================
+           MODAL
+        ====================================== */
+
+        #collectionModal {
+            opacity: 0;
+            visibility: hidden;
+
+            transition:
+                opacity 0.3s ease,
+                visibility 0.3s ease;
+        }
+
+
+        #collectionModal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+
+        /* ======================================
+           GALLERY IMAGE
+        ====================================== */
+
+        .gallery-image {
+            transition:
+                transform 0.4s ease,
+                opacity 0.3s ease;
+        }
+
+
+        .gallery-card:hover .gallery-image {
+            transform: scale(1.05);
+        }
+
+
+        /* ======================================
+           CARD IMAGE
+        ====================================== */
+
+        .main-image {
+            transition: transform 0.5s ease;
+        }
+
+
+        .card-wrapper:hover .main-image {
+            transform: scale(1.05);
+        }
+
+
+        /* ======================================
+           SCROLLBAR
+        ====================================== */
+
+        ::-webkit-scrollbar {
+            width: 7px;
+        }
+
+
+        ::-webkit-scrollbar-track {
+            background: #0b0b0d;
+        }
+
+
+        ::-webkit-scrollbar-thumb {
+            background: #40371e;
+            border-radius: 10px;
+        }
+    </style>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #111;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #c99b4a;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="p-3  bg-[black] md:p-[20px]">
+        <div class="container items-center flex justify-between max-w-[1072px] mx-auto w-full relative">
+            <a href="../index.html" class="logo ">
+                <img data-aos="fade-right" src="../img/Text.svg" alt="Logo" class="h-8 md:h-auto">
+            </a>
+
+            <ul id="nav-menu"
+                class=" hidden fixed inset-0 bg-[#1a1a1a] flex-col items-center justify-center space-y-6 z-40 md:relative md:inset-auto md:bg-transparent md:flex md:flex-row md:space-y-0 md:space-x-8">
+                <li class="inline-block group relative">
+                    <a data-aos="fade-right" href="../index.html"
+                        class="text-18px md:text-[16px] hover:text-[#F2C36B] text-[#D2C5B2] font-medium tracking-wide">MENY</a>
+                    <span
+                        class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                </li>
+                <li class="inline-block group relative">
+                    <a data-aos="fade-right" href=""
+                        class="text-18px md:text-[16px] hover:text-[#F2C36B] text-[#D2C5B2] font-medium tracking-wide">TAJRIBA</a>
+                    <span
+                        class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                </li>
+                <li class="inline-block group relative">
+                    <a data-aos="fade-right" href="./3-pages.html"
+                        class="text-18px md:text-[16px] hover:text-[#F2C36B] text-[#D2C5B2] font-medium tracking-wide">SHAXSIY
+                        ZIYOFAT</a>
+                    <span
+                        class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                </li>
+                <li class="inline-block group relative">
+                    <a data-aos="fade-right" href="./4-pages.html"
+                        class="text-18px md:text-[16px] hover:text-[#F2C36B] text-[#D2C5B2] font-medium tracking-wide">MANZILLAR</a>
+                    <span
+                        class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                </li>
+            </ul>
+            <div class="text-center hidden max-[768px]:inline-block">
+                <button
+                    class="inline-flex  rotate-[90deg] text-[25px] items-center justify-center text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+                    type="button" data-drawer-target="drawer-disable-body-scrolling"
+                    data-drawer-show="drawer-disable-body-scrolling" data-drawer-body-scrolling="false"
+                    aria-controls="drawer-disable-body-scrolling">
+                    |||
+                </button>
+            </div>
+            <div id="drawer-disable-body-scrolling"
+                class="fixed rounded-[10px]  mt-[-2px] border-[1px] max-[600px]! top-0 left-0 z-40 h-screen backdrop-blur-[8px] p-5 overflow-y-auto transition-transform -translate-x-full  w-90 h-500 border-e border-default"
+                tabindex="-1" aria-labelledby="drawer-disable-body-scrolling-label">
+                <div class="border-default pb-4 flex items-center">
+                    <button type="button" data-drawer-hide="drawer-disable-body-scrolling"
+                        aria-controls="drawer-disable-body-scrolling"
+                        class="text-body bg-transparent hover:text-heading hover:bg-neutral-tertiary rounded-base w-9 h-9 absolute top-2.5 end-2.5 flex items-center justify-center">
+                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18 17.94 6M18 18 6.06 6" />
+                        </svg>
+                        <span class="sr-only">Close menu</span>
+                    </button>
+                </div>
+                <div class="py-5 overflow-y-auto">
+                    <ul class="mt-[130px] ml-[30px]">
+                        <li class="py-3">
+                            <a href="../index.html"
+                                class="text-[42px]  pl-[60px] duration-[0.3s] hover:text-[#F2C36B] text-[#D2C5B2] font-[Playfair Display] tracking-wide">MENY</a>
+                            <span
+                                class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                        </li>
+                        <li class="py-3">
+                            <a href=""
+                                class="text-[42px] pl-[50px]  duration-[0.3s] hover:text-[#F2C36B] text-[#D2C5B2] font-[Playfair Display] tracking-wide">TAJRIBA</a>
+                            <span
+                                class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                        </li>
+                        <li class="py-3">
+                            <a href=""
+                                class="text-[42px] pt-[31px]  duration-[0.3s] hover:text-[#F2C36B] text-[#D2C5B2] font-[Playfair Display] tracking-wide">XUSUSIY
+                                TADBIRLAR</a>
+                            <span
+                                class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                        </li>
+                        <li class="py-3">
+                            <a href=""
+                                class="text-[42px] pl-[50px]  duration-[0.3s] hover:text-[#F2C36B] text-[#D2C5B2] font-[Playfair Display] tracking-wide">GALEREYA</a>
+                            <span
+                                class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <button data-modal-target="crud-modal" data-modal-toggle="crud-modal"
+                    class="text-white py-[10px]! px-[20px] ml-15 max-w-[300px]  bg-linear-65 from-[#E8734A] to-[#D4A853] rounded-[10px]  focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+                    type="button">
+                    Stol band qilish
+                </button>
+
+
+            </div>
+
+
+            <button data-aos="fade-right" data-modal-target="crud-modal" data-modal-toggle="crud-modal"
+                class="text-white bg-gradient-to-r from-[#E8734A] to-[#D4A853] hover:opacity-90  transition-all rounded-full font-medium leading-5 text-sm px-5 py-3 shadow-md focus:outline-none focus:ring-4 focus:ring-[#E8734A]/50 block mx-auto sm:mx-0"
+                type="button">
+                Stol band qilish
+            </button>
+
+            <!-- Modal Oynasi (Tashqi qatlam) -->
+            <div id="crud-modal" tabindex="-1" aria-hidden="true"
+                class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-full max-h-full bg-black/60 backdrop-blur-sm p-4">
+
+                <!-- Modal Konteyneri -->
+                <div class="relative w-full max-w-md max-h-full my-auto">
+                    <!-- Modal kontenti -->
+                    <div
+                        class="relative bg-gradient-to-br from-[#E8734A] to-[#D4A853] rounded-2xl shadow-2xl p-5 md:p-6 border border-white/10">
+
+                        <!-- Modal Sarlavhasi (Header) -->
+                        <div class="flex items-center justify-between border-b border-white/20 pb-4">
+                            <h3 class="text-xl text-white font-semibold tracking-wide">
+                                Stol band qilish
+                            </h3>
+                            <button type="button"
+                                class="text-white/80 bg-white/10 hover:bg-white/20 hover:text-white rounded-xl text-sm w-9 h-9 inline-flex justify-center items-center transition-colors"
+                                data-modal-hide="crud-modal">
+                                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6" />
+                                </svg>
+                                <span class="sr-only">Yopish</span>
+                            </button>
+                        </div>
+
+                        <!-- Modal Formasi -->
+                        <form action="#" class="mt-4">
+                            <div class="grid gap-4 grid-cols-2">
+
+                                <!-- Ism kiritish (To'liq qator) -->
+                                <div class="col-span-2">
+                                    <label for="name" class="block text-white mb-2 text-sm font-medium">Ismingiz</label>
+                                    <input type="text" name="name" id="name"
+                                        class="bg-white/15 border border-white/20 rounded-xl text-white text-sm focus:ring-2 focus:ring-white focus:border-transparent block w-full px-3.5 py-2.5 shadow-sm placeholder:text-white/60 outline-none transition-all"
+                                        placeholder="Ismingizni kiriting" required>
+                                </div>
+
+                                <!-- Joy narxi (Mobil qurilmada to'liq qator, sm ekrandan boshlab yarim qator) -->
+                                <div class="col-span-2 sm:col-span-1">
+                                    <label for="price" class="block text-white mb-2 text-sm font-medium">Joy
+                                        narxi</label>
+                                    <input type="number" name="price" id="price"
+                                        class="bg-white/15 border border-white/20 rounded-xl text-white text-sm focus:ring-2 focus:ring-white focus:border-transparent block w-full px-3.5 py-2.5 shadow-sm placeholder:text-white/60 outline-none transition-all"
+                                        placeholder="$2999" required>
+                                </div>
+
+                                <!-- Joyni tanlash (Mobil qurilmada to'liq qator, sm ekrandan boshlab yarim qator) -->
+                                <div class="col-span-2 sm:col-span-1">
+                                    <label for="category" class="block text-white mb-2 text-sm font-medium">Joyni
+                                        tanlang</label>
+                                    <select id="category"
+                                        class="bg-white border-none rounded-xl text-gray-800 text-sm focus:ring-2 focus:ring-[#E8734A] block w-full px-3.5 py-2.5 shadow-sm outline-none transition-all appearance-none cursor-pointer">
+                                        <option selected>Oilaviy joy</option>
+                                        <option value="couple">Ikkishilik joy</option>
+                                        <option value="birthday">Tug'ilgan kun uchun joy</option>
+                                    </select>
+                                </div>
+
+                                <!-- Izoh (To'liq qator) -->
+                                <div class="col-span-2">
+                                    <label for="description"
+                                        class="block text-white mb-2 text-sm font-medium">Izoh</label>
+                                    <textarea id="description" rows="4"
+                                        class="bg-white border-none rounded-xl text-gray-800 text-sm focus:ring-2 focus:ring-[#E8734A] block w-full p-3.5 shadow-sm placeholder:text-gray-400 outline-none transition-all resize-none"
+                                        placeholder="Biz haqimizda izoh qoldiring..."></textarea>
+                                </div>
+
+                                <!-- Tasdiqlash tugmasi (Yangi qo'shildi - Formani yakunlash uchun) -->
+                                <div class="col-span-2 mt-2">
+                                    <button type="submit"
+                                        class="w-full bg-white text-[#E8734A] hover:bg-white/90 active:scale-[0.99] font-semibold rounded-xl text-sm px-5 py-3 shadow-md transition-all">
+                                        Band qilishni tasdiqlash
+                                    </button>
+                                </div>
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section
+            class="relative w-full min-h-screen bg-cover bg-center flex items-center justify-center overflow-hidden"
+            style="background-image: url('../2-pages-img/bg-hero.png');">
+
+            <div class="absolute inset-0 bg-black/50"></div>
+
+            <div class="relative z-10 text-center px-4 max-w-4xl mx-auto select-none animate-fade-in">
+                <div
+                    class="flex justify-center items-center gap-2 md:gap-4 text-[10px] sm:text-xs md:text-sm tracking-[0.2em] text-[#D4A853] uppercase mb-4 font-serif">
+                    <span class="hover:text-white transition-colors duration-200 cursor-default">Restoran</span>
+                    <span class="text-amber-100/40">/</span>
+                    <span class="hover:text-white transition-colors duration-200 cursor-default">Chiroyli
+                        Lahzalar</span>
+                </div>
+                <h1
+                    class="font-['Literata',serif] text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[96px] text-stone-100 font-medium tracking-wide mb-6 leading-tight drop-shadow-lg hover:text-[#D4A853] transition-colors duration-300">
+                    Bizning <br class="sm:hidden"> Taomnoma
+                </h1>
+                <p
+                    class="font-serif text-sm sm:text-base md:text-lg lg:text-xl italic text-[#A8A5A0E5] tracking-[1px] hover:text-[#D4A853] transition-colors duration-200 leading-relaxed max-w-2xl mx-auto">
+                    Har bitta taomda o'ziga xos mehr va takrorlanmas lazzatni his qiling
+                </p>
+
+            </div>
+        </section>
+
+        <section class="py-20 px-5 p-3 bg-[#0C0C0E]">
+            <div class="grid  grid-cols-1 md:grid-cols-3  gap-[24px] max-w-[1072px] mx-auto  w-full">
+                <div
+                    class="bg-[#18181c] max-w-[441.33px] rounded-2xl overflow-hidden border border-zinc-800/50 flex flex-col justify-between group transition-all duration-300 hover:border-zinc-700">
+                    <div>
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="../2-pages-img/Cho'g'da pishgan losos.png" alt="Losos"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <span
+                                class="absolute top-4 left-4 bg-[#d4af37]/20 text-[#d4af37] text-xs font-medium px-3 py-1 rounded-full backdrop-blur-sm border border-[#d4af37]/30">
+                                Shef tanlovi
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="text-[30px]  font-[Manrope]  text-[#F5EFE6] leading-tight">Cho'g'da
+                                    pishgan losos
+                                </h3>
+                                <span class="text-[18px] mt-2 items-center font-[Manrope] text-[#d4af37]">$34</span>
+                            </div>
+                            <p class="text-[16px] font-[Manrope] text-zinc-400 line-clamp-3 leading-relaxed">
+                                Asal-za'faronli sir, yovvoyi qo'ziqorinli rizotto, ko'mirda pishgan parhez kashnich
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-2 flex items-center justify-between border-t border-zinc-800/50">
+                        <div class="flex items-center gap-4 text-xs text-zinc-500">
+                            <span class="flex items-center">
+                                <img class="w-5" src="../2-pages-img/mini icon.png" alt="">
+                                <i data-lucide="clock" class="w-4 h-4 text-zinc-600"></i> 25 daq
+                            </span>
+                            <span class="flex items-center ">
+                                <img class="w-4" src="../2-pages-img/mini2.png" alt="">
+                                <i data-lucide="flame" class="w-4 h-4 text-zinc-600"></i> 480 kkal
+                            </span>
+                        </div>
+                        <button class="text-zinc-500  hover:text-red-500 transition-colors">
+                            <i data-lucide="heart" class="w-5 h-5">
+                                <label class="ui-like">
+                                    <input type="checkbox">
+                                    <div class="like">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="">
+                                            <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
+                                            <g stroke-linejoin="round" stroke-linecap="round"
+                                                id="SVGRepo_tracerCarrier"></g>
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path
+                                                    d="M20.808,11.079C19.829,16.132,12,20.5,12,20.5s-7.829-4.368-8.808-9.421C2.227,6.1,5.066,3.5,8,3.5a4.444,4.444,0,0,1,4,2,4.444,4.444,0,0,1,4-2C18.934,3.5,21.773,6.1,20.808,11.079Z">
+                                                </path>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                </label>
+                            </i>
+                        </button>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-[#18181c] max-w-[441px] rounded-2xl overflow-hidden border border-zinc-800/50 flex flex-col justify-between group transition-all duration-300 hover:border-zinc-700">
+                    <div>
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="../2-pages-img/Saralangan sabzili assorti.png" alt="Sabzili assorti"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <span
+                                class="absolute top-4 left-4 bg-emerald-500/20 text-emerald-400 text-xs font-medium px-3 py-1 rounded-full backdrop-blur-sm border border-emerald-500/30">
+                                Vegan
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="text-[30px] font-[Manrope] text-[#F5EFE6] leading-tight">Saralangan sabzili
+                                    assorti
+                                </h3>
+                                <span class="text-xl font-[Manrope] mt-2 text-[#d4af37]">$18</span>
+                            </div>
+                            <p class="text-[16px] text-[#A8A5A0] font-[Manrope] line-clamp-3 leading-relaxed">
+                                Sekin qovurilgan saralangan sabzilar, anorli gastrik, qovurilgan urug'lar va...
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-2 flex items-center justify-between border-t border-zinc-800/50">
+                        <div class="flex items-center gap-4 text-xs text-zinc-500">
+                            <span class="flex items-center gap-1">
+                                <img class="w-5" src="../2-pages-img/mini icon.png" alt="">
+                                <i data-lucide="clock" class="w-4 h-4 text-zinc-600"></i> 15 daq
+                            </span>
+                            <span class="flex items-center gap-1">
+                                <img class="w-4" src="../2-pages-img/mini2.png" alt="">
+                                <i data-lucide="flame" class="w-4 h-4 text-zinc-600"></i> 220 kkal
+                            </span>
+                        </div>
+                        <button class="text-zinc-500 hover:text-red-500 transition-colors">
+                            <i data-lucide="heart" class="w-5 h-5">
+                                <label class="ui-like">
+                                    <input type="checkbox">
+                                    <div class="like">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="">
+                                            <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
+                                            <g stroke-linejoin="round" stroke-linecap="round"
+                                                id="SVGRepo_tracerCarrier"></g>
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path
+                                                    d="M20.808,11.079C19.829,16.132,12,20.5,12,20.5s-7.829-4.368-8.808-9.421C2.227,6.1,5.066,3.5,8,3.5a4.444,4.444,0,0,1,4,2,4.444,4.444,0,0,1,4-2C18.934,3.5,21.773,6.1,20.808,11.079Z">
+                                                </path>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                </label>
+                            </i>
+                        </button>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-[#18181c] max-w-[441.33px]  rounded-2xl overflow-hidden border border-zinc-800/50 flex flex-col justify-between group transition-all duration-300 hover:border-zinc-700">
+                    <div>
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="../2-pages-img/Cho'g'da pishgan Vagyū filatosi.png" alt="Vagyu Steyk"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <span
+                                class="absolute top-4 left-4 bg-purple-500/20 text-purple-400 text-xs font-medium px-3 py-1 rounded-full backdrop-blur-sm border border-purple-500/30">
+                                Premium
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="text-[30px] font-[Manrope] text-[#F5EFE6] leading-tight">Cho'g'da pishgan
+                                    Vagyū
+                                    filatosi</h3>
+                                <span class="text-[19px] font-[Manrope] mt-2 text-[#d4af37]">$62</span>
+                            </div>
+                            <p class="text-[16px] text-[#A8A5A0] font-[Manrope] line-clamp-3 leading-relaxed">
+                                8-untsiya Vagyū filatosi, qush ko'zi qalampiri saryog'i, truffel pyuresi va qizil
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-2 flex items-center justify-between border-t border-zinc-800/50">
+                        <div class="flex items-center gap-4 text-xs text-zinc-500">
+                            <span class="flex items-center gap-1">
+                                <img class="w-5" src="../2-pages-img/mini icon.png" alt="">
+                                <i data-lucide="clock" class="w-4 h-4 text-zinc-600"></i> 35 daq
+                            </span>
+                            <span class="flex items-center gap-1">
+                                <img class="w-4" src="../2-pages-img/mini2.png" alt="">
+                                <i data-lucide="flame" class="w-4 h-4 text-zinc-600"></i> 720 kkal
+                            </span>
+                        </div>
+                        <button class="text-zinc-500 hover:text-red-500 transition-colors">
+                            <i data-lucide="heart" class="w-5 h-5">
+                                <!-- From Uiverse.io by Yaya12085 -->
+                                <label class="ui-like">
+                                    <input type="checkbox">
+                                    <div class="like">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="">
+                                            <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
+                                            <g stroke-linejoin="round" stroke-linecap="round"
+                                                id="SVGRepo_tracerCarrier"></g>
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path
+                                                    d="M20.808,11.079C19.829,16.132,12,20.5,12,20.5s-7.829-4.368-8.808-9.421C2.227,6.1,5.066,3.5,8,3.5a4.444,4.444,0,0,1,4,2,4.444,4.444,0,0,1,4-2C18.934,3.5,21.773,6.1,20.808,11.079Z">
+                                                </path>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                </label>
+                            </i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section
+            class="bg-[#0c0c0e] py-[60px]! min-h-screen flex items-center justify-center p-4 md:p-8 font-sans antialiased text-zinc-200">
+            <div
+                class="relative max-w-[1072px] w-full rounded-2xl overflow-hidden border border-zinc-800/40 shadow-2xl gold-corners gold-corners-inner min-h-[550px] flex items-center">
+
+                <div class="absolute inset-0 z-0">
+                    <img src="../2-pages-img/bgyellow.jpg" alt="Restoran foni" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/70 lg:bg-black/50"></div>
+                </div>
+                <div
+                    class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 w-full p-6 sm:p-10 md:p-14 items-center">
+                    <div
+                        class="lg:col-span-5 flex flex-col space-y-4 md:space-y-6 text-center lg:text-left items-center lg:items-start">
+                        <div>
+                            <span
+                                class="text-xs md:text-[14px] uppercase tracking-[0.3em] font-[Manrope] text-[#D4A853] block mb-2 md:mb-3">
+                                Esklyuziv tajriba
+                            </span>
+                            <h1
+                                class="text-3xl sm:text-4xl md:text-5xl font-[Literata] text-white font-medium tracking-wide leading-tight">
+                                O'choq sayohati
+                            </h1>
+                        </div>
+                        <p
+                            class="text-sm sm:text-base md:text-[18px] text-[#A8A5A0] font-[Manrope] leading-relaxed max-w-md">
+                            Bizning mualliflik 7-kursli mavsumiy degustatsiya taomnomasimiz, tabiatimiz tarixini olov va
+                            ziravorlar orqali hikoya qiladi.
+                        </p>
+                        <div class="pt-2 w-full sm:w-auto">
+                            <button
+                                class="w-full sm:w-auto bg-[#D4A853] hover:bg-[#d4af37] text-[#0c0c0e] font-bold font-[Liberation Serif] text-xs sm:text-sm px-6 py-3.5 rounded-full transition-all duration-300 shadow-lg shadow-[#e4be5b]/10 hover:shadow-[#e4be5b]/20 active:scale-95 whitespace-nowrap">
+                                Degustatsiya band qilish — $145
+                            </button>
+                        </div>
+                    </div>
+                    <div
+                        class="lg:col-span-7 bg-[#141417]/70 backdrop-blur-md rounded-xl border border-zinc-800/50 p-5 sm:p-6 md:p-8 shadow-xl w-full">
+                        <ul class="flex flex-col space-y-1">
+                            <li class="flex items-center justify-between py-3 border-b border-zinc-800/40 group">
+                                <span
+                                    class="text-xs sm:text-sm font-[Manrope] text-white tracking-wide transition-colors group-hover:text-[#e4be5b] pr-2">
+                                    I. Amuse-Bouche: Za'faron marvaridi </span>
+                                <i data-lucide="star" class="w-3.5 h-3.5 fill-[#e4be5b] text-[#e4be5b] shrink-0"></i>
+                            </li>
+                            <li class="flex items-center justify-between py-3 border-b border-zinc-800/40 group">
+                                <span
+                                    class="text-xs sm:text-sm font-[Manrope] text-white tracking-wide transition-colors group-hover:text-[#e4be5b]">
+                                    II. Dudlangan dengiz taroqchasi
+                                </span>
+                            </li>
+                            <li class="flex items-center justify-between py-3 border-b border-zinc-800/40 group">
+                                <span
+                                    class="text-xs sm:text-sm font-[Manrope] text-white tracking-wide transition-colors group-hover:text-[#e4be5b]">
+                                    III. Cho'g'da qovurilgan ildizpoya sho'rvasi
+                                </span>
+                            </li>
+                            <li class="flex items-center justify-between py-3 border-b border-zinc-800/40 group">
+                                <span
+                                    class="text-xs sm:text-sm font-[Manrope] text-white tracking-wide transition-colors group-hover:text-[#e4be5b]">
+                                    IV. Anjir bilan tovada pishirilgan bedana
+                                </span>
+                            </li>
+                            <li class="flex items-center justify-between py-3 border-b border-zinc-800/40 group">
+                                <span
+                                    class="text-xs sm:text-sm font-[Manrope] text-white tracking-wide transition-colors group-hover:text-[#e4be5b]">
+                                    V. Qora truffel bilan Vagyū
+                                </span>
+                            </li>
+                            <li class="flex items-center justify-between py-3 border-b border-zinc-800/40 group">
+                                <span
+                                    class="text-xs sm:text-sm font-[Manrope] text-white tracking-wide transition-colors group-hover:text-[#e4be5b]">
+                                    VI. Ta'm yangilovchi: Rayhonli sorbet
+                                </span>
+                            </li>
+                            <li class="flex items-center justify-between py-3 group">
+                                <span
+                                    class="text-xs sm:text-sm font-[Manrope] text-white tracking-wide transition-colors group-hover:text-[#e4be5b]">
+                                    VII. Dekonstruksiya qilingan asalari uyasi
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="min-h-screen
+           bg-[#0b0b0d]
+           py-10
+           md:py-12
+           px-5">
+
+
+            <div class="max-w-[1200px]
+               mx-auto">
+
+
+                <!-- ========================================== -->
+                <!-- HEADER -->
+                <!-- ========================================== -->
+
+                <div class="flex
+                   flex-col
+                   md:flex-row
+                   md:items-center
+                   md:justify-between
+                   gap-4
+                   mb-10">
+
+
+                    <!-- TITLE -->
+
+                    <h1 class="font-serif
+                       text-[32px]
+                       md:text-[38px]
+                       lg:text-[40px]
+                       text-[#f5efe6]
+                       leading-tight">
+
+                        Vinolar va Kokteyllar
+
+                    </h1>
+
+
+
+                    <!-- TO'LIQ TO'PLAM -->
+
+                    <button id="openCollection" class="text-[#d4af37]
+                       text-[14px]
+                       md:text-[15px]
+                       font-medium
+                       hover:text-[#f3cf63]
+                       transition
+                       duration-300
+                       self-start
+                       md:self-auto">
+
+                        To'liq to'plamni ko'rish
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- ========================================== -->
+                <!-- 4 TA ASOSIY CARD -->
+                <!-- ========================================== -->
+
+                <div class="grid
+                   grid-cols-1
+                   sm:grid-cols-2
+                   lg:grid-cols-4
+                   gap-x-5
+                   gap-y-10">
+
+
+
+                    <!-- ====================================== -->
+                    <!-- CARD 1 -->
+                    <!-- ====================================== -->
+
+                    <div class="card-wrapper
+                       relative
+                       group">
+
+
+                        <!-- CARD -->
+
+                        <div class="wine-card
+                           relative
+                           bg-[#121214]
+                           border
+                           border-[#1d1d20]
+                           rounded-[17px]
+                           overflow-visible
+                           h-[310px]
+                           flex
+                           items-center
+                           justify-center
+                           transition
+                           duration-300
+                           hover:border-[#4a4029]">
+
+
+                            <!-- IMAGE -->
+
+                            <img src="../2-pages-img/Cho'g'da pishgan losos.png" alt="Château Ember Rouge" class="main-image
+                               w-[130px]
+                               h-[70px]
+                               object-cover">
+
+
+                            <!-- VINTAGE -->
+
+                            <span class="absolute
+                               bottom-7
+                               left-1/2
+                               -translate-x-1/2
+                               border
+                               border-[#6b5120]
+                               text-[#d4af37]
+                               rounded-full
+                               px-3
+                               py-1
+                               text-[11px]
+                               tracking-wide
+                               whitespace-nowrap">
+
+                                VINTAGE 2018
+
+                            </span>
+
+
+
+                            <!-- INSTAGRAM -->
+
+                            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="instagram-box
+                               absolute
+                               left-1/2
+                               top-1/2
+                               w-[50px]
+                               h-[50px]
+                               rounded-full
+                               bg-[#d4af37]
+                               text-black
+                               flex
+                               items-center
+                               justify-center
+                               shadow-[0_8px_30px_rgba(0,0,0,0.5)]
+                               hover:bg-white
+                               transition
+                               duration-300" aria-label="Instagram">
+
+                                <i class="fa-brands
+                                   fa-instagram
+                                   text-[22px]">
+                                </i>
+
+                            </a>
+
+                        </div>
+
+
+
+                        <!-- TEXT -->
+
+                        <div class="mt-5">
+
+                            <h3 class="text-[16px]
+                               font-semibold
+                               text-[#f4f1eb]">
+
+                                Château Ember Rouge
+
+                            </h3>
+
+
+                            <p class="text-[12px]
+                               text-[#77757a]
+                               mt-1">
+
+                                Bordo, Fransiya
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ====================================== -->
+                    <!-- CARD 2 -->
+                    <!-- ====================================== -->
+
+                    <div class="card-wrapper
+                       relative
+                       group">
+
+
+                        <div class="wine-card
+                           relative
+                           bg-[#121214]
+                           border
+                           border-[#1d1d20]
+                           rounded-[17px]
+                           overflow-visible
+                           h-[310px]
+                           flex
+                           items-center
+                           justify-center
+                           transition
+                           duration-300
+                           hover:border-[#4a4029]">
+
+
+                            <img src="../2-pages-img/Saralangan sabzili assorti.png" alt="Saffron Negroni" class="main-image
+                               w-[130px]
+                               h-[70px]
+                               object-cover">
+
+
+                            <!-- INSTAGRAM -->
+
+                            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="instagram-box
+                               absolute
+                               left-1/2
+                               top-1/2
+                               w-[50px]
+                               h-[50px]
+                               rounded-full
+                               bg-[#d4af37]
+                               text-black
+                               flex
+                               items-center
+                               justify-center
+                               shadow-[0_8px_30px_rgba(0,0,0,0.5)]
+                               hover:bg-white
+                               transition
+                               duration-300" aria-label="Instagram">
+
+                                <i class="fa-brands
+                                   fa-instagram
+                                   text-[22px]">
+                                </i>
+
+                            </a>
+
+                        </div>
+
+
+
+                        <div class="mt-5">
+
+                            <h3 class="text-[16px]
+                               font-semibold
+                               text-[#f4f1eb]">
+
+                                Saffron Negroni
+
+                            </h3>
+
+
+                            <p class="text-[12px]
+                               text-[#77757a]
+                               mt-1">
+
+                                Xonadoni mamlakati
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ====================================== -->
+                    <!-- CARD 3 -->
+                    <!-- ====================================== -->
+
+                    <div class="card-wrapper
+                       relative
+                       group">
+
+
+                        <div class="wine-card
+                           relative
+                           bg-[#121214]
+                           border
+                           border-[#1d1d20]
+                           rounded-[17px]
+                           overflow-visible
+                           h-[310px]
+                           flex
+                           items-center
+                           justify-center
+                           transition
+                           duration-300
+                           hover:border-[#4a4029]">
+
+
+                            <img src="../2-pages-img/Cho'g'da pishgan Vagyū filatosi.png" alt="Golden Saffron Brut"
+                                class="main-image
+                               w-[130px]
+                               h-[70px]
+                               object-cover">
+
+
+                            <!-- VINTAGE -->
+
+                            <span class="absolute
+                               bottom-7
+                               left-1/2
+                               -translate-x-1/2
+                               border
+                               border-[#6b5120]
+                               text-[#d4af37]
+                               rounded-full
+                               px-3
+                               py-1
+                               text-[11px]
+                               tracking-wide
+                               whitespace-nowrap">
+
+                                VINTAGE 2021
+
+                            </span>
+
+
+
+                            <!-- INSTAGRAM -->
+
+                            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="instagram-box
+                               absolute
+                               left-1/2
+                               top-1/2
+                               w-[50px]
+                               h-[50px]
+                               rounded-full
+                               bg-[#d4af37]
+                               text-black
+                               flex
+                               items-center
+                               justify-center
+                               shadow-[0_8px_30px_rgba(0,0,0,0.5)]
+                               hover:bg-white
+                               transition
+                               duration-300" aria-label="Instagram">
+
+                                <i class="fa-brands
+                                   fa-instagram
+                                   text-[22px]">
+                                </i>
+
+                            </a>
+
+                        </div>
+
+
+
+                        <div class="mt-5">
+
+                            <h3 class="text-[16px]
+                               font-semibold
+                               text-[#f4f1eb]">
+
+                                Golden Saffron Brut
+
+                            </h3>
+
+
+                            <p class="text-[12px]
+                               text-[#77757a]
+                               mt-1">
+
+                                Napa vodiysi, AQSH
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ====================================== -->
+                    <!-- CARD 4 -->
+                    <!-- ====================================== -->
+
+                    <div class="card-wrapper
+                       relative
+                       group">
+
+
+                        <div class="wine-card
+                           relative
+                           bg-[#121214]
+                           border
+                           border-[#1d1d20]
+                           rounded-[17px]
+                           overflow-visible
+                           h-[310px]
+                           flex
+                           items-center
+                           justify-center
+                           transition
+                           duration-300
+                           hover:border-[#4a4029]">
+
+
+                            <img src="../2-pages-img/Cho'g'da pishgan Vagyū filatosi.png" alt="Smoked Old Fashioned"
+                                class="main-image
+                               w-[135px]
+                               h-[75px]
+                               object-cover">
+
+
+                            <!-- INSTAGRAM -->
+
+                            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="instagram-box
+                               absolute
+                               left-1/2
+                               top-1/2
+                               w-[50px]
+                               h-[50px]
+                               rounded-full
+                               bg-[#d4af37]
+                               text-black
+                               flex
+                               items-center
+                               justify-center
+                               shadow-[0_8px_30px_rgba(0,0,0,0.5)]
+                               hover:bg-white
+                               transition
+                               duration-300" aria-label="Instagram">
+
+                                <i class="fa-brands
+                                   fa-instagram
+                                   text-[22px]">
+                                </i>
+
+                            </a>
+
+                        </div>
+
+
+
+                        <div class="mt-5">
+
+                            <h3 class="text-[16px]
+                               font-semibold
+                               text-[#f4f1eb]">
+
+                                Smoked Old Fashioned
+
+                            </h3>
+
+
+                            <p class="text-[12px]
+                               text-[#77757a]
+                               mt-1">
+
+                                Bochkada saqlangan
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+
+
+        <!-- ================================================= -->
+        <!-- 12 TA RASM MODALI -->
+        <!-- ================================================= -->
+
+        <div id="collectionModal" class="fixed
+           inset-0
+           z-[9999]
+           bg-black/90
+           backdrop-blur-md
+           p-5
+           md:p-8
+           overflow-y-auto">
+
+
+            <div class="max-w-[1200px]
+               mx-auto
+               pb-10">
+
+
+                <!-- ========================================== -->
+                <!-- MODAL HEADER -->
+                <!-- ========================================== -->
+
+                <div class="flex
+                   items-center
+                   justify-between
+                   mb-8">
+
+
+                    <h2 class="font-serif
+                       text-[30px]
+                       md:text-[38px]
+                       text-[#f5efe6]">
+
+                        To'liq to'plam
+
+                    </h2>
+
+
+
+                    <!-- BACK -->
+
+                    <button id="closeCollection" class="px-6
+                       py-2.5
+                       rounded-lg
+                       border
+                       border-[#555]
+                       text-white
+                       text-sm
+                       font-medium
+                       hover:bg-[#d4af37]
+                       hover:text-black
+                       hover:border-[#d4af37]
+                       transition
+                       duration-300">
+
+                        Back
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- ========================================== -->
+                <!-- 12 TA RASM -->
+                <!-- ========================================== -->
+
+                <div class="grid
+                   grid-cols-1
+                   sm:grid-cols-2
+                   md:grid-cols-3
+                   lg:grid-cols-4
+                   gap-5">
+
+
+
+                    <!-- RASM 1 -->
+
+                    <div class="gallery-card
+                       rounded-xl
+                       overflow-hidden
+                       bg-[#151517]">
+
+                        <img src="../2-pages-img/Cho'g'da pishgan losos.png" alt="Wine 1" class="gallery-image
+                           w-full
+                           h-[230px]
+                           object-cover">
+
+                    </div>
+
+
+
+                    <!-- RASM 2 -->
+
+                    <div class="gallery-card
+                       rounded-xl
+                       overflow-hidden
+                       bg-[#151517]">
+
+                        <img src="../2-pages-img/Saralangan sabzili assorti.png" alt="Wine 2" class="gallery-image
+                           w-full
+                           h-[230px]
+                           object-cover">
+
+                    </div>
+
+
+
+                    <!-- RASM 3 -->
+
+                    <div class="gallery-card
+                       rounded-xl
+                       overflow-hidden
+                       bg-[#151517]">
+
+                        <img src="../2-pages-img/Cho'g'da pishgan Vagyū filatosi.png" alt="Wine 3" class="gallery-image
+                           w-full
+                           h-[230px]
+                           object-cover">
+
+                    </div>
+
+
+
+                    <!-- RASM 4 -->
+
+                    <div class="gallery-card
+                       rounded-xl
+                       overflow-hidden
+                       bg-[#151517]">
+
+                        <img src="../2-pages-img/Cho'g'da pishgan losos.png" alt="Wine 4" class="gallery-image
+                           w-full
+                           h-[230px]
+                           object-cover">
+
+                    </div>
+
+
+
+                    <!-- RASM 5 -->
+
+                    <div class="gallery-card
+                       rounded-xl
+                       overflow-hidden
+                       bg-[#151517]">
+
+                        <img src="../2-pages-img/Saralangan sabzili assorti.png" alt="Wine 5" class="gallery-image
+                           w-full
+                           h-[230px]
+                           object-cover">
+
+                    </div>
+
+
+
+                    <!-- RASM 6 -->
+
+                    <div class="gallery-card
+                       rounded-xl
+                       overflow-hidden
+                       bg-[#151517]">
+
+                        <img src="../2-pages-img/Cho'g'da pishgan Vagyū filatosi.png" alt="Wine 6" class="gallery-image
+                           w-full
+                           h-[230px]
+                           object-cover">
+
+                    </div>
+
+
+
+                    <!-- RASM 7 -->
+
+                    <div class="gallery-card
+                       rounded-xl
+                       overflow-hidden
+                       bg-[#151517]">
+
+                        <img src="../2-pages-img/Cho'g'da pishgan losos.png" alt="Wine 7" class="gallery-image
+                           w-full
+                           h-[230px]
+                           object-cover">
+
+                    </div>
+
+
+
+                    <!-- RASM 8 -->
+
+                    <div class="gallery-card
+                       rounded-xl
+                       overflow-hidden
+                       bg-[#151517]">
+
+                        <img src="../2-pages-img/Saralangan sabzili assorti.png" alt="Wine 8" class="gallery-image
+                           w-full
+                           h-[230px]
+                           object-cover">
+
+                    </div>
+
+
+
+                    <!-- RASM 9 -->
+
+                    <div class="gallery-card
+                       rounded-xl
+                       overflow-hidden
+                       bg-[#151517]">
+
+                        <img src="../2-pages-img/Cho'g'da pishgan Vagyū filatosi.png" alt="Wine 9" class="gallery-image
+                           w-full
+                           h-[230px]
+                           object-cover">
+
+                    </div>
+
+
+
+                    <!-- RASM 10 -->
+
+                    <div class="gallery-card
+                       rounded-xl
+                       overflow-hidden
+                       bg-[#151517]">
+
+                        <img src="../2-pages-img/Cho'g'da pishgan losos.png" alt="Wine 10" class="gallery-image
+                           w-full
+                           h-[230px]
+                           object-cover">
+
+                    </div>
+
+
+
+                    <!-- RASM 11 -->
+
+                    <div class="gallery-card
+                       rounded-xl
+                       overflow-hidden
+                       bg-[#151517]">
+
+                        <img src="../2-pages-img/Saralangan sabzili assorti.png" alt="Wine 11" class="gallery-image
+                           w-full
+                           h-[230px]
+                           object-cover">
+
+                    </div>
+
+
+
+                    <!-- RASM 12 -->
+
+                    <div class="gallery-card
+                       rounded-xl
+                       overflow-hidden
+                       bg-[#151517]">
+
+                        <img src="../2-pages-img/Cho'g'da pishgan Vagyū filatosi.png" alt="Wine 12" class="gallery-image
+                           w-full
+                           h-[230px]
+                           object-cover">
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <section
+            class="bg-[#0c0c0e] min-h-screen flex items-center justify-center p-4 md:p-8 font-sans antialiased text-zinc-200">
+            <div
+                class="relative max-w-4xl w-full bg-gray-900 rounded-2xl border border-zinc-800/40 p-8 md:p-16 text-center overflow-hidden shadow-2xl">
+                <div class="absolute -bottom-16 -left-16 w-48 h-48 bg-[#F5EFE6]/20 rounded-full ">
+                </div>
+                <div class="absolute -top-16 -right-16 w-48 h-48 bg-[#F5EFE6]/20 rounded-full">
+                </div>
+                <div class="relative z-10 flex flex-col items-center space-y-6">
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-serif text-white font-medium tracking-wide">
+                        Qaror qabul qila olmayapsizmi?
+                    </h2>
+                    <p class="text-sm md:text-base text-zinc-400 font-light leading-relaxed max-w-xl mx-auto">
+                        Bizning bosh oshpazimizga sizning didingizga va oqshom kayfiyatiga mos keladigan maxsus
+                        oshpazlik sayohatini yaratishga imkon bering.
+                    </p>
+                    <div class="pt-4">
+                        <button
+                            class="bg-[#e4be5b] hover:bg-[#d4af37] text-[#0c0c0e] font-semibold text-xs md:text-sm px-8 py-3.5 rounded-full transition-all duration-300 flex items-center gap-2.5 shadow-lg shadow-[#e4be5b]/5 hover:shadow-[#e4be5b]/15 active:scale-98">
+                            <span>Oshpaz stolni band qilish</span>
+                            <i data-lucide="utensils" class="w-4 h-4 stroke-[2.5]"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <footer
+            class="bg-[#0A0A0C] text-[#8E8D94] font-[Manrope] pt-16 pb-8 px-4 sm:px-6 lg:px-8 border-t border-[#1A1A1E]">
+            <div class="max-w-[1232px] mx-auto w-full">
+                <div
+                    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-8 md:gap-12 pb-12 text-center sm:text-left">
+                    <div class="md:col-span-4 flex flex-col items-center sm:items-start">
+                        <img class="pb-3" src="../img/Container.svg" alt="">
+                        <p class="text-sm leading-relaxed max-w-[280px]">
+                            Kinematografik nuar gastronomiyasi. Olov va atmosfera mahorati.
+                        </p>
+                    </div>
+
+                    <div class="md:col-span-3">
+                        <h3 class="text-white text-xs font-semibold tracking-[0.2em] uppercase mb-5">
+                            Tadqiq eting
+                        </h3>
+                        <ul class="space-y-3 text-sm">
+                            <li><a href=""
+                                    class="hover:text-[#D4A853] font-[Manrope] text-[#6B6862] text-[16px] transition-colors duration-200">Bizning
+                                    menyular</a></li>
+                            <li><a href=""
+                                    class="hover:text-[#D4A853] font-[Manrope] text-[#6B6862] text-[16px] transition-colors duration-200">Oshxona</a>
+                            </li>
+                            <li><a href=""
+                                    class="hover:text-[#D4A853] font-[Manrope] text-[#6B6862] text-[16px] transition-colors duration-200">Xususiy
+                                    tadbirlar</a></li>
+                            <li><a href=""
+                                    class="hover:text-[#D4A853] font-[Manrope] text-[#6B6862] text-[16px] transition-colors duration-200">Yerto‘la
+                                    ro‘yxati</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="md:col-span-3">
+                        <h3 class="text-white text-xs font-semibold tracking-[0.2em] uppercase mb-5">
+                            Tashrif buyuring
+                        </h3>
+                        <div class="space-y-3 text-sm leading-relaxed">
+                            <p class="font-[Manrope] text-[#6B6862] text-[16px]">
+                                1248 Obsidian Avenue<br>
+                                London, EC1A 4BB
+                            </p>
+                            <p class=" font-[Manrope] text-[#6B6862] text-[16px] pt-1">
+                                Sek - Shan: 18:00 - 23:00
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-2 flex flex-col items-center sm:items-start">
+                        <h3 class="text-white text-xs font-semibold tracking-[0.2em] uppercase mb-5">
+                            Kuzating
+                        </h3>
+                        <div class="flex space-x-3">
+                            <a href=""
+                                class="w-9 h-9 rounded-full bg-[#141416] border border-[#222224] flex items-center justify-center text-gray-400 hover:text-white hover:border-gray-500 transition-all duration-300">
+                                <img src="../img/Link.png" alt="">
+                            </a>
+                            <a href=""
+                                class="w-9 h-9 rounded-full bg-[#141416] border border-[#222224] flex items-center justify-center text-gray-400 hover:text-white hover:border-gray-500 transition-all duration-300">
+                                <img src="../img/Link (1).png" alt="">
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div
+                    class="border-t border-[#16161A] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-600">
+                    <p class="text-center sm:text-left">
+                        © 2024 Saffron & Ember. Kinematografik nuar gastronomiyasi.
+                    </p>
+                    <div class="flex space-x-6">
+                        <a href="" class="hover:text-gray-400 transition-colors duration-200">Maxfiylik siyosati</a>
+                        <a href="" class="hover:text-gray-400 transition-colors duration-200">Xizmat ko‘rsatish
+                            shartlari</a>
+                    </div>
+                </div>
+
+            </div>
+        </footer>
+
+    </main>
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800
+        });
+    </script>
+    <script>
+        lucide.createIcons();
+    </script>
+
+    <script>
+
+
+        /* ============================================
+           ELEMENTLARNI OLISH
+        ============================================ */
+
+        const openCollection =
+            document.getElementById("openCollection");
+
+        const closeCollection =
+            document.getElementById("closeCollection");
+
+        const collectionModal =
+            document.getElementById("collectionModal");
+
+
+
+        /* ============================================
+           TO'LIQ TO'PLAMNI OCHISH
+        ============================================ */
+
+        openCollection.addEventListener("click", function () {
+
+            collectionModal.classList.add("active");
+
+            document.body.style.overflow = "hidden";
+
+        });
+
+
+
+        /* ============================================
+           BACK TUGMASI
+        ============================================ */
+
+        closeCollection.addEventListener("click", function () {
+
+            collectionModal.classList.remove("active");
+
+            document.body.style.overflow = "auto";
+
+        });
+
+
+
+        /* ============================================
+           MODAL TASHQARISIGA BOSILSA
+        ============================================ */
+
+        collectionModal.addEventListener("click", function (event) {
+
+            if (event.target === collectionModal) {
+
+                collectionModal.classList.remove("active");
+
+                document.body.style.overflow = "auto";
+
+            }
+
+        });
+
+
+
+        /* ============================================
+           ESC TUGMASI
+        ============================================ */
+
+        document.addEventListener("keydown", function (event) {
+
+            if (event.key === "Escape") {
+
+                collectionModal.classList.remove("active");
+
+                document.body.style.overflow = "auto";
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>

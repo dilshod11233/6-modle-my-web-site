@@ -1,0 +1,1998 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Montserrat:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        .playfair {
+            font-family: "Playfair Display", serif;
+        }
+
+        .montserrat {
+            font-family: "Montserrat", sans-serif;
+        }
+    </style>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #101112;
+            color: white;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .playfair {
+            font-family: "Playfair Display", serif;
+        }
+
+        /* Scroll */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #111;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #c99b4a;
+            border-radius: 10px;
+        }
+
+        /* Modal animation */
+        .modal {
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.95);
+            transition: all 0.25s ease;
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
+
+        /* Marker */
+        .map-marker {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 1px solid #d6a34e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(20, 20, 20, 0.65);
+            box-shadow: 0 0 0 7px rgba(210, 160, 70, 0.05);
+        }
+
+        .map-marker::after {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #d6a34e;
+        }
+
+        /* Card hover */
+        .location-card {
+            transition: 0.3s ease;
+        }
+
+        .location-card:hover {
+            border-color: #8f6b31;
+            transform: translateY(-2px);
+        }
+
+        /* Button */
+        .gold-btn {
+            background: linear-gradient(90deg,
+                    #e59b43,
+                    #d8ad57);
+            color: #111;
+        }
+
+        .gold-btn:hover {
+            filter: brightness(1.08);
+        }
+
+        .outline-btn:hover {
+            background: #c99b4a;
+            color: #111;
+        }
+    </style>
+
+    <style>
+        :root {
+            --gold-1: #f4c96a;
+            --gold-2: #c98a3e;
+            --bg-0: #0b0b0c;
+            --bg-1: #141414;
+            --bg-2: #1b1b1c;
+            --line: #2a2a2a;
+        }
+
+        body {
+            background:
+                radial-gradient(1200px 500px at 20% -10%, rgba(244, 201, 106, 0.05), transparent 60%),
+                var(--bg-0);
+            font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+        }
+
+        .map-wrap {
+            position: relative;
+            background: #141414;
+            overflow: hidden;
+        }
+
+        .map-streets {
+            position: absolute;
+            inset: 0;
+            opacity: .55;
+        }
+
+        .map-vignette {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(120% 100% at 50% 30%, transparent 40%, rgba(0, 0, 0, .65) 100%);
+            pointer-events: none;
+        }
+
+        .pin {
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, .55));
+            transition: transform .18s ease;
+        }
+
+        .pin:hover {
+            transform: translateY(-3px) scale(1.06);
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, #e8823a, var(--gold-1));
+            color: #1a1206;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            filter: brightness(1.06);
+        }
+
+        .btn-primary:active {
+            transform: translateY(1px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, .16);
+            color: #f2f2f2;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, .06);
+            border-color: rgba(255, 255, 255, .28);
+        }
+
+        .btn-outline:active {
+            transform: translateY(1px);
+        }
+
+        .card {
+            background: linear-gradient(180deg, var(--bg-1), var(--bg-2));
+            border: 1px solid var(--line);
+        }
+
+        .badge-open {
+            background: rgba(56, 193, 114, .12);
+            color: #4ade80;
+            border: 1px solid rgba(74, 222, 128, .25);
+        }
+
+        .badge-closed {
+            background: rgba(244, 63, 94, .12);
+            color: #fb7185;
+            border: 1px solid rgba(251, 113, 133, .25);
+        }
+
+        .dot-open {
+            background: #4ade80;
+            box-shadow: 0 0 6px #4ade80;
+        }
+
+        .dot-closed {
+            background: #fb7185;
+            box-shadow: 0 0 6px #fb7185;
+        }
+
+        .nb-tag {
+            background: var(--bg-2);
+            border: 1px solid var(--line);
+            transition: border-color .15s ease, transform .15s ease;
+        }
+
+        .nb-tag:hover {
+            border-color: rgba(244, 201, 106, .4);
+            transform: translateY(-2px);
+            cursor: pointer;
+        }
+
+        ::-webkit-scrollbar {
+            height: 8px;
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #2c2c2c;
+            border-radius: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        /* toast */
+        #toast {
+            transition: opacity .25s ease, transform .25s ease;
+        }
+
+        /* modal */
+        #modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .6);
+            backdrop-filter: blur(3px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .2s ease;
+            z-index: 60;
+            padding: 1rem;
+        }
+
+        #modal-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #modal-box {
+            background: linear-gradient(180deg, var(--bg-1), var(--bg-2));
+            border: 1px solid var(--line);
+            max-width: 420px;
+            width: 100%;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transform: translateY(10px) scale(.98);
+            transition: transform .2s ease;
+        }
+
+        #modal-overlay.show #modal-box {
+            transform: translateY(0) scale(1);
+        }
+    </style>
+
+    <style>
+        :root {
+            --gold-1: #f4c96a;
+            --gold-2: #c98a3e;
+            --bg-0: #0b0b0c;
+            --bg-1: #141414;
+            --bg-2: #1b1b1c;
+            --line: #2a2a2a;
+        }
+
+        body {
+            background:
+                radial-gradient(1200px 500px at 20% -10%, rgba(244, 201, 106, 0.05), transparent 60%),
+                var(--bg-0);
+            font-family: 'Georgia', 'Iowan Old Style', ui-serif, serif;
+        }
+
+        .sans {
+            font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+        }
+
+        .card {
+            background: linear-gradient(180deg, var(--bg-1), var(--bg-2));
+            border: 1px solid var(--line);
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, #e8823a, var(--gold-1));
+            color: #1a1206;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            filter: brightness(1.06);
+        }
+
+        .btn-primary:active {
+            transform: translateY(1px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, .18);
+            color: #f2f2f2;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, .06);
+            border-color: rgba(255, 255, 255, .3);
+        }
+
+        .btn-outline:active {
+            transform: translateY(1px);
+        }
+
+        .badge-open {
+            color: #4ade80;
+        }
+
+        .dot-open {
+            background: #4ade80;
+            box-shadow: 0 0 6px #4ade80;
+        }
+
+        /* ---- Carousel ---- */
+        .carousel {
+            position: relative;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+        }
+
+        .carousel-track {
+            display: flex;
+            height: 100%;
+            transition: transform .45s cubic-bezier(.65, 0, .35, 1);
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .carousel-fade {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, .65) 100%);
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 12px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            z-index: 10;
+        }
+
+        .carousel-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .4);
+            transition: all .2s ease;
+            cursor: pointer;
+        }
+
+        .carousel-dot.active {
+            background: var(--gold-1);
+            width: 18px;
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            translate: 0 -50%;
+            width: 32px;
+            height: 32px;
+            background: rgba(0, 0, 0, .45);
+            border: 1px solid rgba(255, 255, 255, .15);
+            border-radius: 999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            opacity: 0;
+            transition: opacity .18s ease, background .18s ease;
+            z-index: 10;
+        }
+
+        .carousel:hover .carousel-arrow {
+            opacity: 1;
+        }
+
+        .carousel-arrow:hover {
+            background: rgba(0, 0, 0, .7);
+        }
+
+        .carousel-arrow.prev {
+            left: 10px;
+        }
+
+        .carousel-arrow.next {
+            right: 10px;
+        }
+
+        .amenity-icon {
+            width: 16px;
+            height: 16px;
+            color: rgba(255, 255, 255, .45);
+        }
+
+        /* toast */
+        #toast {
+            transition: opacity .25s ease, transform .25s ease;
+        }
+
+        /* modal */
+        #modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .6);
+            backdrop-filter: blur(3px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .2s ease;
+            z-index: 60;
+            padding: 1rem;
+        }
+
+        #modal-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #modal-box {
+            background: linear-gradient(180deg, var(--bg-1), var(--bg-2));
+            border: 1px solid var(--line);
+            max-width: 420px;
+            width: 100%;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transform: translateY(10px) scale(.98);
+            transition: transform .2s ease;
+            font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+        }
+
+        #modal-overlay.show #modal-box {
+            transform: translateY(0) scale(1);
+        }
+    </style>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #111214;
+            color: white;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .playfair {
+            font-family: "Playfair Display", serif;
+        }
+
+        /* Tab animatsiyasi */
+        .tab-content {
+            animation: fadeIn .35s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #111214;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #c99d4e;
+            border-radius: 10px;
+        }
+
+        /* Galereya */
+        .gallery-img {
+            transition: .35s ease;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.04);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="p-3  bg-[black] md:p-[20px]">
+        <div class="container items-center flex justify-between max-w-[1232px] mx-auto w-full relative">
+            <a href="../index.html" class="logo ">
+                <img data-aos="fade-right" src="../img/Text.svg" alt="Logo" class="h-8 md:h-auto">
+            </a>
+
+            <ul id="nav-menu"
+                class=" hidden fixed inset-0 bg-[#1a1a1a] flex-col items-center justify-center space-y-6 z-40 md:relative md:inset-auto md:bg-transparent md:flex md:flex-row md:space-y-0 md:space-x-8">
+                <li class="inline-block group relative">
+                    <a data-aos="fade-right" href="../index.html"
+                        class="text-18px md:text-[16px] hover:text-[#F2C36B] text-[#D2C5B2] font-medium tracking-wide">MENY</a>
+                    <span
+                        class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                </li>
+                <li class="inline-block group relative">
+                    <a data-aos="fade-right" href="../pages/2-pages.html"
+                        class="text-18px md:text-[16px] hover:text-[#F2C36B] text-[#D2C5B2] font-medium tracking-wide">TAJRIBA</a>
+                    <span
+                        class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                </li>
+                <li class="inline-block group relative">
+                    <a data-aos="fade-right" href="./3-pages.html"
+                        class="text-18px md:text-[16px] hover:text-[#F2C36B] text-[#D2C5B2] font-medium tracking-wide">SHAXSIY
+                        ZIYOFAT</a>
+                    <span
+                        class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                </li>
+                <li class="inline-block group relative">
+                    <a data-aos="fade-right" href=""
+                        class="text-18px md:text-[16px] hover:text-[#F2C36B] text-[#D2C5B2] font-medium tracking-wide">MANZILLAR</a>
+                    <span
+                        class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                </li>
+            </ul>
+            <div class="text-center hidden max-[768px]:inline-block">
+                <button
+                    class="inline-flex  rotate-[90deg] text-[25px] items-center justify-center text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+                    type="button" data-drawer-target="drawer-disable-body-scrolling"
+                    data-drawer-show="drawer-disable-body-scrolling" data-drawer-body-scrolling="false"
+                    aria-controls="drawer-disable-body-scrolling">
+                    |||
+                </button>
+            </div>
+            <div id="drawer-disable-body-scrolling"
+                class="fixed rounded-[10px] mt-[-2px] border-[1px] max-[300px] top-0 left-0 z-40 h-screen backdrop-blur-[8px] p-4 overflow-y-auto transition-transform -translate-x-full bg-neutral-primary-soft w-80 border-e border-default"
+                tabindex="-1" aria-labelledby="drawer-disable-body-scrolling-label">
+                <div class="border-default pb-4 flex items-center">
+                    <button type="button" data-drawer-hide="drawer-disable-body-scrolling"
+                        aria-controls="drawer-disable-body-scrolling"
+                        class="text-body bg-transparent hover:text-heading hover:bg-neutral-tertiary rounded-base w-9 h-9 absolute top-2.5 end-2.5 flex items-center justify-center">
+                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18 17.94 6M18 18 6.06 6" />
+                        </svg>
+                        <span class="sr-only">Close menu</span>
+                    </button>
+                </div>
+                <div class="py-5 overflow-y-auto">
+                    <ul>
+                        <li class="py-3">
+                            <a href="../pages/1-pages.html"
+                                class="text-[42px]  pl-[60px] duration-[0.3s] hover:text-[#F2C36B] text-[#D2C5B2] font-[Playfair Display] tracking-wide">MENY</a>
+                            <span
+                                class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                        </li>
+                        <li class="py-3">
+                            <a href=""
+                                class="text-[42px] pl-[50px]  duration-[0.3s] hover:text-[#F2C36B] text-[#D2C5B2] font-[Playfair Display] tracking-wide">TAJRIBA</a>
+                            <span
+                                class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                        </li>
+                        <li class="py-3">
+                            <a href=""
+                                class="text-[42px] pt-[31px]  duration-[0.3s] hover:text-[#F2C36B] text-[#D2C5B2] font-[Playfair Display] tracking-wide">XUSUSIY
+                                TADBIRLAR</a>
+                            <span
+                                class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                        </li>
+                        <li class="py-3">
+                            <a href=""
+                                class="text-[42px] pl-[50px]  duration-[0.3s] hover:text-[#F2C36B] text-[#D2C5B2] font-[Playfair Display] tracking-wide">GALEREYA</a>
+                            <span
+                                class="hidden md:inline-block absolute top-[22px] left-[0px] h-[2px] bg-[orange] duration-[0.3s] w-[0px] group-hover:w-full"></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <button data-modal-target="crud-modal" data-modal-toggle="crud-modal"
+                    class="text-white ml-15 max-w-[300px]  bg-linear-65 from-[#E8734A] to-[#D4A853] rounded-[9999px]  focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+                    type="button">
+                    Stol band qilish
+                </button>
+
+
+            </div>
+
+
+            <button data-aos="fade-right" data-modal-target="crud-modal" data-modal-toggle="crud-modal"
+                class="text-white bg-gradient-to-r from-[#E8734A] to-[#D4A853] hover:opacity-90  transition-all rounded-full font-medium leading-5 text-sm px-5 py-3 shadow-md focus:outline-none focus:ring-4 focus:ring-[#E8734A]/50 block mx-auto sm:mx-0"
+                type="button">
+                Stol band qilish
+            </button>
+
+            <!-- Modal Oynasi (Tashqi qatlam) -->
+            <div id="crud-modal" tabindex="-1" aria-hidden="true"
+                class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-full max-h-full bg-black/60 backdrop-blur-sm p-4">
+
+                <!-- Modal Konteyneri -->
+                <div class="relative w-full max-w-md max-h-full my-auto">
+                    <!-- Modal kontenti -->
+                    <div
+                        class="relative bg-gradient-to-br from-[#E8734A] to-[#D4A853] rounded-2xl shadow-2xl p-5 md:p-6 border border-white/10">
+
+                        <!-- Modal Sarlavhasi (Header) -->
+                        <div class="flex items-center justify-between border-b border-white/20 pb-4">
+                            <h3 class="text-xl text-white font-semibold tracking-wide">
+                                Stol band qilish
+                            </h3>
+                            <button type="button"
+                                class="text-white/80 bg-white/10 hover:bg-white/20 hover:text-white rounded-xl text-sm w-9 h-9 inline-flex justify-center items-center transition-colors"
+                                data-modal-hide="crud-modal">
+                                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6" />
+                                </svg>
+                                <span class="sr-only">Yopish</span>
+                            </button>
+                        </div>
+
+                        <!-- Modal Formasi -->
+                        <form action="#" class="mt-4">
+                            <div class="grid gap-4 grid-cols-2">
+
+                                <!-- Ism kiritish (To'liq qator) -->
+                                <div class="col-span-2">
+                                    <label for="name" class="block text-white mb-2 text-sm font-medium">Ismingiz</label>
+                                    <input type="text" name="name" id="name"
+                                        class="bg-white/15 border border-white/20 rounded-xl text-white text-sm focus:ring-2 focus:ring-white focus:border-transparent block w-full px-3.5 py-2.5 shadow-sm placeholder:text-white/60 outline-none transition-all"
+                                        placeholder="Ismingizni kiriting" required>
+                                </div>
+
+                                <!-- Joy narxi (Mobil qurilmada to'liq qator, sm ekrandan boshlab yarim qator) -->
+                                <div class="col-span-2 sm:col-span-1">
+                                    <label for="price" class="block text-white mb-2 text-sm font-medium">Joy
+                                        narxi</label>
+                                    <input type="number" name="price" id="price"
+                                        class="bg-white/15 border border-white/20 rounded-xl text-white text-sm focus:ring-2 focus:ring-white focus:border-transparent block w-full px-3.5 py-2.5 shadow-sm placeholder:text-white/60 outline-none transition-all"
+                                        placeholder="$2999" required>
+                                </div>
+
+                                <!-- Joyni tanlash (Mobil qurilmada to'liq qator, sm ekrandan boshlab yarim qator) -->
+                                <div class="col-span-2 sm:col-span-1">
+                                    <label for="category" class="block text-white mb-2 text-sm font-medium">Joyni
+                                        tanlang</label>
+                                    <select id="category"
+                                        class="bg-white border-none rounded-xl text-gray-800 text-sm focus:ring-2 focus:ring-[#E8734A] block w-full px-3.5 py-2.5 shadow-sm outline-none transition-all appearance-none cursor-pointer">
+                                        <option selected>Oilaviy joy</option>
+                                        <option value="couple">Ikkishilik joy</option>
+                                        <option value="birthday">Tug'ilgan kun uchun joy</option>
+                                    </select>
+                                </div>
+
+                                <!-- Izoh (To'liq qator) -->
+                                <div class="col-span-2">
+                                    <label for="description"
+                                        class="block text-white mb-2 text-sm font-medium">Izoh</label>
+                                    <textarea id="description" rows="4"
+                                        class="bg-white border-none rounded-xl text-gray-800 text-sm focus:ring-2 focus:ring-[#E8734A] block w-full p-3.5 shadow-sm placeholder:text-gray-400 outline-none transition-all resize-none"
+                                        placeholder="Biz haqimizda izoh qoldiring..."></textarea>
+                                </div>
+
+                                <!-- Tasdiqlash tugmasi (Yangi qo'shildi - Formani yakunlash uchun) -->
+                                <div class="col-span-2 mt-2">
+                                    <button type="submit"
+                                        class="w-full bg-white text-[#E8734A] hover:bg-white/90 active:scale-[0.99] font-semibold rounded-xl text-sm px-5 py-3 shadow-md transition-all">
+                                        Band qilishni tasdiqlash
+                                    </button>
+                                </div>
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="relative w-full min-h-[260px] md:min-h-[420px] lg:min-h-[520px]
+               bg-cover bg-center bg-no-repeat flex items-center justify-center"
+            style="background-image: url('../4-pages-img/city.png');">
+            <div class="absolute inset-0 bg-black/45"></div>
+            <div class="relative z-10 text-center px-4">
+
+                <h1 class="playfair text-white font-semibold
+                       text-[42px] sm:text-[52px] md:text-[70px] lg:text-[82px]
+                       leading-none drop-shadow-[0_3px_8px_rgba(0,0,0,0.7)]">
+                    Bizni toping
+                </h1>
+
+                <p class="montserrat mt-5
+                       text-[#c9a45c]
+                       text-[8px] sm:text-[10px] md:text-[12px] lg:text-[13px]
+                       tracking-[0.28em] uppercase">
+                    SHAHARNING TO'RT NUQTASIDAGI OLOV MASKANLARI
+                </p>
+
+            </div>
+        </section>
+
+        <section class="min-h-screen text-neutral-100 py-20! p-4 md:p-8">
+            <div class="max-w-[1232px] mx-auto">
+
+                <div class="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-6">
+
+                    <!-- MAP PANEL -->
+                    <div class="map-wrap rounded-2xl border border-neutral-800 min-h-[420px] lg:min-h-[560px]">
+                        <img src="../4-pages-img/lacation.png" alt="">
+                        <div class="map-vignette"></div>
+
+                        <div
+                            class="absolute bottom-0 left-0 right-0 bg-black/70 backdrop-blur-sm border-t border-white/5 px-5 py-4">
+                            <div class="flex flex-wrap items-center justify-between gap-3">
+                                <div>
+                                    <h2 class="text-lg font-semibold tracking-wide">LONDON, UK</h2>
+                                    <p class="text-xs text-neutral-400 flex items-center gap-1">
+                                        <span>London District</span>
+                                        <span class="text-[var(--gold-1)]">★ 4.3</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <p class="text-[11px] uppercase tracking-widest text-neutral-500 mt-3 mb-2">Neighborhoods
+                            </p>
+                            <div class="flex gap-3 overflow-x-auto pb-1">
+                                <div class="nb-tag rounded-lg px-4 py-2 min-w-[150px]"
+                                    onclick="showToast('SOHO tumani tanlandi')">
+                                    <p class="text-sm font-medium">SOHO</p>
+                                    <p class="text-[11px] text-neutral-400">Fine Dining &amp; Nightlife</p>
+                                </div>
+                                <div class="nb-tag rounded-lg px-5 py-5 min-w-[150px]"
+                                    onclick="showToast('MAYFAIR tumani tanlandi')">
+                                    <p class="text-sm font-medium">MAYFAIR</p>
+                                    <p class="text-[11px] text-neutral-400">Luxury Retail &amp; Hotels</p>
+                                </div>
+                                <div class="nb-tag rounded-lg px-5 py-5 min-w-[150px]"
+                                    onclick="showToast('WESTMINSTER tumani tanlandi')">
+                                    <p class="text-sm font-medium">WESTMINSTER</p>
+                                    <p class="text-[11px] text-neutral-400">Historic Culture &amp; Landmarks</p>
+                                </div>
+                                <div class="nb-tag rounded-lg px-5 py-5 min-w-[150px]"
+                                    onclick="showToast('SOUTH BANK tumani tanlandi')">
+                                    <p class="text-sm font-medium">SOUTH BANK</p>
+                                    <p class="text-[11px] text-neutral-400">Riverside Culture &amp; Art</p>
+                                </div>
+                                <div class="nb-tag rounded-lg px-5 py-5 min-w-[150px]"
+                                    onclick="showToast('SHOREDITCH tumani tanlandi')">
+                                    <p class="text-sm font-medium">SHOREDITCH</p>
+                                    <p class="text-[11px] text-neutral-400">Street Art &amp; Nightlife</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-5">
+                        <div class="card rounded-2xl p-5">
+                            <div class="flex items-start justify-between gap-3">
+                                <h3 class="text-xl font-semibold">Shahar markazi</h3>
+                                <span
+                                    class="badge-open text-[11px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5 whitespace-nowrap">
+                                    <span class="w-1.5 h-1.5 rounded-full dot-open"></span> HOZIR OCHIQ
+                                </span>
+                            </div>
+                            <p class="text-sm text-neutral-400 mt-2 leading-relaxed">
+                                Saffron &amp; Ember markazi, bu yerda shahar energiyasi olovning tabiiy kuchi bilan
+                                uchrashadi.
+                            </p>
+                            <div class="flex gap-3 mt-5">
+                                <button class="btn-primary flex-1 rounded-lg py-2.5 text-sm"
+                                    onclick="getDirections('Shahar markazi, London, UK')">Yo'nalishlar</button>
+                                <button class="btn-outline flex-1 rounded-lg py-2.5 text-sm"
+                                    onclick="bookNow('Shahar markazi')">Band qilish</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="card rounded-2xl p-5">
+                            <div class="flex items-start justify-between gap-3">
+                                <h3 class="text-xl font-semibold">Sohil bo'yi</h3>
+                                <span
+                                    class="badge-open text-[11px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5 whitespace-nowrap">
+                                    <span class="w-1.5 h-1.5 rounded-full dot-open"></span> HOZIR OCHIQ
+                                </span>
+                            </div>
+                            <p class="text-sm text-neutral-400 mt-2 leading-relaxed">
+                                Hayratlanarli manzara va sadr iforli cho'g'da pishirilgan dengiz mahsulotlari.
+                            </p>
+                            <div class="flex gap-3 mt-5">
+                                <button class="btn-primary flex-1 rounded-lg py-2.5 text-sm"
+                                    onclick="getDirections('Sohil bo\'yi, London, UK')">Yo'nalishlar</button>
+                                <button class="btn-outline flex-1 rounded-lg py-2.5 text-sm"
+                                    onclick="bookNow('Sohil bo\'yi')">Band qilish</button>
+                            </div>
+                        </div>
+
+                        <div class="card rounded-2xl p-5">
+                            <div class="flex items-start justify-between gap-3">
+                                <h3 class="text-xl font-semibold">Adirlar</h3>
+                                <span
+                                    class="badge-closed text-[11px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1.5 whitespace-nowrap">
+                                    <span class="w-1.5 h-1.5 rounded-full dot-closed"></span> YOPIQ
+                                </span>
+                            </div>
+                            <p class="text-sm text-neutral-400 mt-2 leading-relaxed">
+                                Kamdan-kam uchraydigan ov go'shti va tanlangan mahalliy sabzavotlar bilan tayyorlangan
+                                taomlar.
+                            </p>
+                            <div class="flex gap-3 mt-5">
+                                <button
+                                    class="btn-primary flex-1 rounded-lg py-2.5 text-sm opacity-50 cursor-not-allowed"
+                                    disabled>Yo'nalishlar</button>
+                                <button class="btn-outline flex-1 rounded-lg py-2.5 text-sm"
+                                    onclick="bookNow('Adirlar')">Band qilish</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Toast -->
+            <div id="toast"
+                class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-neutral-900 border border-neutral-700 text-sm text-neutral-100 px-5 py-3 rounded-full shadow-xl opacity-0 pointer-events-none z-50">
+            </div>
+
+            <!-- Modal -->
+            <div id="modal-overlay" onclick="if(event.target===this) closeModal()">
+                <div id="modal-box">
+                    <div class="flex items-start justify-between gap-3 mb-1">
+                        <span id="modal-icon" class="text-2xl leading-none"></span>
+                        <button onclick="closeModal()"
+                            class="text-neutral-500 hover:text-neutral-200 text-xl leading-none">&times;</button>
+                    </div>
+                    <h3 id="modal-title" class="text-xl font-semibold mb-2"></h3>
+                    <div id="modal-body" class="text-sm text-neutral-400 leading-relaxed"></div>
+                    <div id="modal-actions" class="mt-5 flex gap-3"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="min-h-screen text-neutral-100 p-4 md:p-10 sans">
+
+            <h1 class="text-center text-3xl md:text-4xl font-semibold tracking-wide mb-10"
+                style="font-family:'Playfair Display', Georgia, serif;">
+                Maskanlarimizni o'rganing
+            </h1>
+
+            <div class="max-w-[1232px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <div class="card rounded-[20px] h-[710px] max-w-[592px] overflow-hidden" data-card>
+                    <div class="carousel" data-carousel>
+                        <div class="carousel-track" data-track>
+                            <div class="carousel-slide">
+                                <img src="../4-pages-img/s&e.png" alt="Saffron & Ember restoran old tomoni" />
+                                <div class="carousel-fade"></div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1200&auto=format&fit=crop"
+                                    alt="Restoran ichki zali" />
+                                <div class="carousel-fade"></div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?q=80&w=1200&auto=format&fit=crop"
+                                    alt="Stol servirovkasi" />
+                                <div class="carousel-fade"></div>
+                            </div>
+                        </div>
+                        <button class="carousel-arrow prev" onclick="moveCarousel(this,-1)">&#8249;</button>
+                        <button class="carousel-arrow next" onclick="moveCarousel(this,1)">&#8250;</button>
+                        <div class="carousel-dots" data-dots></div>
+                    </div>
+
+                    <div class="p-5 pt-18">
+                        <div class="flex items-start justify-between gap-3">
+                            <h2 class="text-xl mt-[-20px] md:text-2xl leading-snug" style="color:var(--gold-1);">Saffron
+                                &amp;
+                                Ember — Shahar markazi</h2>
+                            <span
+                                class="badge-open text-[11px] mt font-medium sans flex items-center gap-1.5 whitespace-nowrap mt-1">
+                                <span class="w-1.5 h-1.5 rounded-full dot-open"></span> HOZIR OCHIQ
+                            </span>
+                        </div>
+
+                        <div class="sans mt-4 py-3 space-y-2 text-sm text-neutral-400">
+                            <p class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-[var(--gold-1)]" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="1.8">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M12 21c-4.5-4.2-7-7.9-7-11a7 7 0 1 1 14 0c0 3.1-2.5 6.8-7 11Z" />
+                                    <circle cx="12" cy="10" r="2.4" />
+                                </svg>
+                                Firelight shoh ko'chasi 120, Markaziy tuman
+                            </p>
+                            <p class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-[var(--gold-1)]" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="1.8">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M3 5.5C3 4.7 3.7 4 4.5 4H7l1.6 4L7 9.5c.9 2.3 2.7 4.1 5 5L13.5 13l4 1.6v2.5c0 .8-.7 1.5-1.5 1.5C9.4 18.6 5.4 14.6 3 8.5V5.5Z" />
+                                </svg>
+                                +1 (555) 012-3456
+                            </p>
+                        </div>
+
+                        <div class="flex items-center gap-4 mt-4 pt-4 border-t border-white/5">
+                            <svg class="amenity-icon" title="Parkovka" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="1.6">
+                                <rect x="4" y="4" width="16" height="16" rx="2" />
+                                <path d="M9 16V8h3.2a2.4 2.4 0 0 1 0 4.8H9" />
+                            </svg>
+                            <svg class="amenity-icon" title="Terrasa" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="1.6">
+                                <path d="M12 3 3 9h18L12 3Z" />
+                                <path d="M5 9v10M19 9v10M9 13v6M15 13v6" />
+                            </svg>
+                            <svg class="amenity-icon" title="Musiqa" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="1.6">
+                                <circle cx="6" cy="18" r="2.4" />
+                                <circle cx="17" cy="16" r="2.4" />
+                                <path d="M8.4 18V6.5L19.4 4v11.5" />
+                            </svg>
+                            <svg class="amenity-icon" title="Bar" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                stroke-width="1.6">
+                                <path d="M4 4h16l-6.5 8v6.5h-3V12L4 4Z" />
+                            </svg>
+                        </div>
+
+                        <div class="flex gap-3 mt-5">
+                            <button class="btn-primary flex-1 rounded-full py-2.5 text-sm sans"
+                                onclick="getDirections('Saffron & Ember — Shahar markazi, Firelight shoh ko\'chasi 120')">Yo'nalishni
+                                olish</button>
+                            <button class="btn-outline flex-1 rounded-full py-2.5 text-sm sans"
+                                onclick="bookNow('Saffron & Ember — Shahar markazi')">Shu yerda band qilish</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card rounded-[20px] h-[710px] max-w-[592px] overflow-hidden" data-card>
+                    <div class="carousel" data-carousel>
+                        <div class="carousel-track" data-track>
+                            <div class="carousel-slide">
+                                <img src="../4-pages-img/sohil.png" alt="Saffron & Ember restoran old tomoni" />
+                                <div class="carousel-fade"></div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1200&auto=format&fit=crop"
+                                    alt="Restoran ichki zali" />
+                                <div class="carousel-fade"></div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?q=80&w=1200&auto=format&fit=crop"
+                                    alt="Stol servirovkasi" />
+                                <div class="carousel-fade"></div>
+                            </div>
+                        </div>
+                        <button class="carousel-arrow prev" onclick="moveCarousel(this,-1)">&#8249;</button>
+                        <button class="carousel-arrow next" onclick="moveCarousel(this,1)">&#8250;</button>
+                        <div class="carousel-dots" data-dots></div>
+                    </div>
+
+                    <div class="p-5 pt-18">
+                        <div class="flex items-start justify-between gap-3">
+                            <h2 class="text-xl mt-[-20px] md:text-2xl leading-snug" style="color:var(--gold-1);">Saffron
+                                &amp;
+                                Ember — Sohil bo'yi</h2>
+                            <span
+                                class="badge-open text-[11px] mt font-medium sans flex items-center gap-1.5 whitespace-nowrap mt-1">
+                                <span class="w-1.5 h-1.5 rounded-full dot-open"></span> HOZIR OCHIQ
+                            </span>
+                        </div>
+
+                        <div class="sans mt-4 py-3 space-y-2 text-sm text-neutral-400">
+                            <p class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-[var(--gold-1)]" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="1.8">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M12 21c-4.5-4.2-7-7.9-7-11a7 7 0 1 1 14 0c0 3.1-2.5 6.8-7 11Z" />
+                                    <circle cx="12" cy="10" r="2.4" />
+                                </svg>
+                                Firelight shoh ko'chasi 120, Markaziy tuman
+                            </p>
+                            <p class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-[var(--gold-1)]" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="1.8">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M3 5.5C3 4.7 3.7 4 4.5 4H7l1.6 4L7 9.5c.9 2.3 2.7 4.1 5 5L13.5 13l4 1.6v2.5c0 .8-.7 1.5-1.5 1.5C9.4 18.6 5.4 14.6 3 8.5V5.5Z" />
+                                </svg>
+                                +1 (555) 012-3456
+                            </p>
+                        </div>
+
+                        <div class="flex items-center gap-4 mt-4 pt-4 border-t border-white/5">
+                            <svg class="amenity-icon" title="Parkovka" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="1.6">
+                                <rect x="4" y="4" width="16" height="16" rx="2" />
+                                <path d="M9 16V8h3.2a2.4 2.4 0 0 1 0 4.8H9" />
+                            </svg>
+                            <svg class="amenity-icon" title="Terrasa" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="1.6">
+                                <path d="M12 3 3 9h18L12 3Z" />
+                                <path d="M5 9v10M19 9v10M9 13v6M15 13v6" />
+                            </svg>
+                            <svg class="amenity-icon" title="Musiqa" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="1.6">
+                                <circle cx="6" cy="18" r="2.4" />
+                                <circle cx="17" cy="16" r="2.4" />
+                                <path d="M8.4 18V6.5L19.4 4v11.5" />
+                            </svg>
+                            <svg class="amenity-icon" title="Bar" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                stroke-width="1.6">
+                                <path d="M4 4h16l-6.5 8v6.5h-3V12L4 4Z" />
+                            </svg>
+                        </div>
+
+                        <div class="flex gap-3 mt-5">
+                            <button class="btn-primary flex-1 rounded-full py-2.5 text-sm sans"
+                                onclick="getDirections('Saffron & Ember — Shahar markazi, Firelight shoh ko\'chasi 120')">Yo'nalishni
+                                olish</button>
+                            <button class="btn-outline flex-1 rounded-full py-2.5 text-sm sans"
+                                onclick="bookNow('Saffron & Ember — Shahar markazi')">Shu yerda band qilish</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Toast -->
+            <div id="toast"
+                class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-neutral-900 border border-neutral-700 text-sm text-neutral-100 px-5 py-3 rounded-full shadow-xl opacity-0 pointer-events-none z-50 sans">
+            </div>
+
+            <!-- Modal -->
+            <div id="modal-overlay" onclick="if(event.target===this) closeModal()">
+                <div id="modal-box">
+                    <div class="flex items-start justify-between gap-3 mb-1">
+                        <span id="modal-icon" class="text-2xl leading-none"></span>
+                        <button onclick="closeModal()"
+                            class="text-neutral-500 hover:text-neutral-200 text-xl leading-none">&times;</button>
+                    </div>
+                    <h3 id="modal-title" class="text-xl font-semibold mb-2"></h3>
+                    <div id="modal-body" class="text-sm text-neutral-400 leading-relaxed"></div>
+                    <div id="modal-actions" class="mt-5 flex gap-3"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="min-h-screen bg-[#111214] py-20 px-4 sm:px-6">
+
+            <div class="max-w-[1232px] mx-auto
+               bg-[#151618]
+               border border-[#292a2d]
+               rounded-[7px]
+               overflow-hidden">
+
+
+
+                <div class="grid grid-cols-2 md:grid-cols-4
+                   border-b border-[#292a2d]">
+                    <button onclick="showTab('about', this)" class="tab-btn active-tab
+                       relative
+                       h-[60px]
+                       flex items-center justify-center
+                       text-[9px] sm:text-[10px]
+                       tracking-[0.08em]
+                       uppercase
+                       text-[#d8ad59]
+                       transition">
+                        Umumiy ma'lumot
+
+                        <span class="active-line absolute
+                           bottom-0 left-0
+                           w-full h-[1px]
+                           bg-[#d8ad59]"></span>
+                    </button>
+                    <button onclick="showTab('gallery', this)" class="tab-btn
+                       relative
+                       h-[60px]
+                       flex items-center justify-center
+                       text-[9px] sm:text-[10px]
+                       tracking-[0.08em]
+                       uppercase
+                       text-[#8c8c8c]
+                       transition
+                       hover:text-[#d8ad59]">
+                        Galereya
+
+                        <span class="active-line hidden
+                           absolute bottom-0 left-0
+                           w-full h-[1px]
+                           bg-[#d8ad59]"></span>
+                    </button>
+
+                    <button onclick="showTab('time', this)" class="tab-btn
+                       relative
+                       h-[60px]
+                       flex items-center justify-center
+                       text-[9px] sm:text-[10px]
+                       tracking-[0.08em]
+                       uppercase
+                       text-[#8c8c8c]
+                       transition
+                       hover:text-[#d8ad59]">
+                        Ish vaqti
+
+                        <span class="active-line hidden
+                           absolute bottom-0 left-0
+                           w-full h-[1px]
+                           bg-[#d8ad59]"></span>
+                    </button>
+
+                    <button onclick="showTab('contact', this)" class="tab-btn
+                       relative
+                       h-[60px]
+                       flex items-center justify-center
+                       text-[9px] sm:text-[10px]
+                       tracking-[0.08em]
+                       uppercase
+                       text-[#8c8c8c]
+                       transition
+                       hover:text-[#d8ad59]">
+                        Aloqa
+
+                        <span class="active-line hidden
+                           absolute bottom-0 left-0
+                           w-full h-[1px]
+                           bg-[#d8ad59]"></span>
+                    </button>
+
+                </div>
+
+
+                <div class="p-6 sm:p-8 md:p-10">
+
+                    <div id="about" class="tab-content">
+
+                        <div class="grid grid-cols-1
+                           lg:grid-cols-[1fr_0.9fr]
+                           gap-8
+                           items-center">
+
+                            <!-- TEXT -->
+                            <div>
+
+                                <h1 class="playfair
+                                   text-3xl sm:text-4xl
+                                   md:text-[38px]
+                                   font-semibold
+                                   text-[#eeeeee]
+                                   mb-5">
+                                    Tuyg'ular maskani
+                                </h1>
+
+
+                                <p class="text-[#777]
+                                   text-[11px] sm:text-xs
+                                   leading-[1.9]
+                                   max-w-[550px]">
+                                    Bizning shahar markazidagi maskanimiz
+                                    vertikal boshpana sifatida yaratilgan.
+                                    Ochiq oshxonaning xom temiridan tortib
+                                    duxoba bilan qoplangan shinam burchaklariga
+                                    har bir santimetr mahorat va olov haqida
+                                    hikoya qiladi.
+                                </p>
+
+
+                                <!-- FEATURES -->
+                                <div class="mt-6 space-y-4">
+
+
+                                    <!-- Feature 1 -->
+                                    <div class="flex items-center gap-3">
+
+                                        <span class="w-[18px] h-[18px]
+                                           shrink-0
+                                           rounded-full
+                                           bg-[#d9a94e]
+                                           text-[#171717]
+                                           flex items-center
+                                           justify-center
+                                           text-[11px]
+                                           font-bold">
+                                            ✓
+                                        </span>
+
+                                        <span class="text-[#c8c8c8]
+                                           text-[10px] sm:text-[11px]">
+                                            120 kishilik asosiy zal
+                                        </span>
+
+                                    </div>
+
+
+                                    <!-- Feature 2 -->
+                                    <div class="flex items-center gap-3">
+
+                                        <span class="w-[18px] h-[18px]
+                                           shrink-0
+                                           rounded-full
+                                           bg-[#d9a94e]
+                                           text-[#171717]
+                                           flex items-center
+                                           justify-center
+                                           text-[11px]
+                                           font-bold">
+                                            ✓
+                                        </span>
+
+                                        <span class="text-[#c8c8c8]
+                                           text-[10px] sm:text-[11px]">
+                                            Eksklyuziv Oshpaz stoli
+                                            (8 kishi uchun)
+                                        </span>
+
+                                    </div>
+
+
+                                    <!-- Feature 3 -->
+                                    <div class="flex items-center gap-3">
+
+                                        <span class="w-[18px] h-[18px]
+                                           shrink-0
+                                           rounded-full
+                                           bg-[#d9a94e]
+                                           text-[#171717]
+                                           flex items-center
+                                           justify-center
+                                           text-[11px]
+                                           font-bold">
+                                            ✓
+                                        </span>
+
+                                        <span class="text-[#c8c8c8]
+                                           text-[10px] sm:text-[11px]">
+                                            Mukofotga sazovor bo'lgan
+                                            yer osti vinoxonasi
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- IMAGE -->
+                            <div class="w-full
+                               h-[230px]
+                               sm:h-[280px]
+                               md:h-[320px]
+                               overflow-hidden
+                               rounded-[4px]">
+
+                                <img src="../4-pages-img/tuygular .svg" alt="Tuyg'ular maskani" class="w-full h-full
+                                   object-cover
+                                   brightness-[0.85]">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div id="gallery" class="tab-content hidden">
+
+                        <div class="mb-7">
+
+                            <h2 class="playfair
+                               text-3xl sm:text-4xl
+                               text-[#eeeeee]">
+                                Galereya
+                            </h2>
+
+                            <p class="text-[#777]
+                               text-[11px]
+                               mt-2">
+                                Maskanimizdagi unutilmas lahzalardan lavhalar.
+                            </p>
+
+                        </div>
+
+
+                        <!-- Gallery -->
+                        <div class="grid grid-cols-2
+                           md:grid-cols-3
+                           gap-3">
+
+                            <div class="h-[180px] overflow-hidden rounded-md">
+                                <img src="../4-pages-img/tuygular .svg" class="gallery-img w-full h-full object-cover"
+                                    alt="Galereya 1">
+                            </div>
+
+                            <div class="h-[180px] overflow-hidden rounded-md">
+                                <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=800&q=90"
+                                    class="gallery-img w-full h-full object-cover" alt="Galereya 2">
+                            </div>
+
+                            <div class="h-[180px] overflow-hidden rounded-md">
+                                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=90"
+                                    class="gallery-img w-full h-full object-cover" alt="Galereya 3">
+                            </div>
+
+                            <div class="h-[180px] overflow-hidden rounded-md">
+                                <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=800&q=90"
+                                    class="gallery-img w-full h-full object-cover" alt="Galereya 4">
+                            </div>
+
+                            <div class="h-[180px] overflow-hidden rounded-md">
+                                <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=800&q=90"
+                                    class="gallery-img w-full h-full object-cover" alt="Galereya 5">
+                            </div>
+
+                            <div class="h-[180px] overflow-hidden rounded-md">
+                                <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=800&q=90"
+                                    class="gallery-img w-full h-full object-cover" alt="Galereya 6">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                 ISH VAQTI
+            ================================================== -->
+
+                    <div id="time" class="tab-content hidden">
+
+                        <div class="max-w-[700px]">
+
+                            <h2 class="playfair
+                               text-3xl sm:text-4xl
+                               text-[#eeeeee]
+                               mb-3">
+                                Ish vaqti
+                            </h2>
+
+                            <p class="text-[#777]
+                               text-[11px]
+                               mb-8">
+                                Sizni har kuni kutib qolamiz.
+                            </p>
+
+
+                            <div class="space-y-1">
+
+
+                                <!-- Monday -->
+                                <div class="flex justify-between
+                                   items-center
+                                   border-b border-[#292a2d]
+                                   py-4">
+
+                                    <span class="text-[#cfcfcf] text-sm">
+                                        Dushanba
+                                    </span>
+
+                                    <span class="text-[#d9a94e] text-sm">
+                                        10:00 — 23:00
+                                    </span>
+
+                                </div>
+
+
+                                <!-- Tuesday -->
+                                <div class="flex justify-between
+                                   items-center
+                                   border-b border-[#292a2d]
+                                   py-4">
+
+                                    <span class="text-[#cfcfcf] text-sm">
+                                        Seshanba
+                                    </span>
+
+                                    <span class="text-[#d9a94e] text-sm">
+                                        10:00 — 23:00
+                                    </span>
+
+                                </div>
+
+
+                                <!-- Wednesday -->
+                                <div class="flex justify-between
+                                   items-center
+                                   border-b border-[#292a2d]
+                                   py-4">
+
+                                    <span class="text-[#cfcfcf] text-sm">
+                                        Chorshanba
+                                    </span>
+
+                                    <span class="text-[#d9a94e] text-sm">
+                                        10:00 — 23:00
+                                    </span>
+
+                                </div>
+
+
+                                <!-- Thursday -->
+                                <div class="flex justify-between
+                                   items-center
+                                   border-b border-[#292a2d]
+                                   py-4">
+
+                                    <span class="text-[#cfcfcf] text-sm">
+                                        Payshanba
+                                    </span>
+
+                                    <span class="text-[#d9a94e] text-sm">
+                                        10:00 — 23:00
+                                    </span>
+
+                                </div>
+
+
+                                <!-- Friday -->
+                                <div class="flex justify-between
+                                   items-center
+                                   border-b border-[#292a2d]
+                                   py-4">
+
+                                    <span class="text-[#cfcfcf] text-sm">
+                                        Juma
+                                    </span>
+
+                                    <span class="text-[#d9a94e] text-sm">
+                                        10:00 — 00:00
+                                    </span>
+
+                                </div>
+
+
+                                <!-- Saturday -->
+                                <div class="flex justify-between
+                                   items-center
+                                   border-b border-[#292a2d]
+                                   py-4">
+
+                                    <span class="text-[#cfcfcf] text-sm">
+                                        Shanba
+                                    </span>
+
+                                    <span class="text-[#d9a94e] text-sm">
+                                        10:00 — 00:00
+                                    </span>
+
+                                </div>
+
+
+                                <!-- Sunday -->
+                                <div class="flex justify-between
+                                   items-center
+                                   py-4">
+
+                                    <span class="text-[#cfcfcf] text-sm">
+                                        Yakshanba
+                                    </span>
+
+                                    <span class="text-[#d9a94e] text-sm">
+                                        10:00 — 22:00
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                 ALOQA
+            ================================================== -->
+
+                    <div id="contact" class="tab-content hidden">
+
+                        <div class="grid grid-cols-1
+                           md:grid-cols-2
+                           gap-10">
+
+                            <!-- Contact info -->
+                            <div>
+
+                                <h2 class="playfair
+                                   text-3xl sm:text-4xl
+                                   text-[#eeeeee]
+                                   mb-4">
+                                    Biz bilan bog'laning
+                                </h2>
+
+                                <p class="text-[#777]
+                                   text-[11px]
+                                   leading-6
+                                   mb-7">
+                                    Savollaringiz yoki band qilish bo'yicha
+                                    ma'lumot olish uchun biz bilan bog'lanishingiz
+                                    mumkin.
+                                </p>
+
+
+                                <!-- Phone -->
+                                <div class="flex gap-4
+                                   items-center
+                                   mb-6">
+
+                                    <div class="w-11 h-11
+                                       rounded-full
+                                       bg-[#292116]
+                                       flex items-center
+                                       justify-center
+                                       text-[#d9a94e]">
+                                        ☎
+                                    </div>
+
+                                    <div>
+
+                                        <p class="text-[10px] text-[#777]">
+                                            Telefon
+                                        </p>
+
+                                        <p class="text-sm text-[#ddd] mt-1">
+                                            +998 90 123 45 67
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- Address -->
+                                <div class="flex gap-4
+                                   items-center
+                                   mb-6">
+
+                                    <div class="w-11 h-11
+                                       rounded-full
+                                       bg-[#292116]
+                                       flex items-center
+                                       justify-center
+                                       text-[#d9a94e]">
+                                        📍
+                                    </div>
+
+                                    <div>
+
+                                        <p class="text-[10px] text-[#777]">
+                                            Manzil
+                                        </p>
+
+                                        <p class="text-sm text-[#ddd] mt-1">
+                                            Shahar markazi, Toshkent
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- Email -->
+                                <div class="flex gap-4
+                                   items-center">
+
+                                    <div class="w-11 h-11
+                                       rounded-full
+                                       bg-[#292116]
+                                       flex items-center
+                                       justify-center
+                                       text-[#d9a94e]">
+                                        ✉
+                                    </div>
+
+                                    <div>
+
+                                        <p class="text-[10px] text-[#777]">
+                                            Email
+                                        </p>
+
+                                        <p class="text-sm text-[#ddd] mt-1">
+                                            info@example.uz
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="bg-[#111214]
+                               border border-[#292a2d]
+                               rounded-md
+                               p-5 sm:p-7">
+
+                                <h3 class="playfair
+                                   text-2xl
+                                   text-[#eeeeee]
+                                   mb-6">
+                                    Xabar yuborish
+                                </h3>
+
+
+                                <input type="text" placeholder="Ismingiz" class="w-full
+                                   bg-transparent
+                                   border border-[#333438]
+                                   rounded-md
+                                   px-4 py-3
+                                   text-xs
+                                   text-white
+                                   placeholder:text-[#666]
+                                   outline-none
+                                   focus:border-[#d9a94e]
+                                   mb-4">
+
+
+                                <input type="text" placeholder="Telefon raqamingiz" class="w-full
+                                   bg-transparent
+                                   border border-[#333438]
+                                   rounded-md
+                                   px-4 py-3
+                                   text-xs
+                                   text-white
+                                   placeholder:text-[#666]
+                                   outline-none
+                                   focus:border-[#d9a94e]
+                                   mb-4">
+
+
+                                <textarea rows="5" placeholder="Xabaringiz..." class="w-full
+                                   bg-transparent
+                                   border border-[#333438]
+                                   rounded-md
+                                   px-4 py-3
+                                   text-xs
+                                   text-white
+                                   placeholder:text-[#666]
+                                   outline-none
+                                   focus:border-[#d9a94e]
+                                   resize-none"></textarea>
+
+
+                                <button class="w-full
+                                   mt-4
+                                   bg-[#d9a94e]
+                                   hover:bg-[#e6b65c]
+                                   text-[#171717]
+                                   rounded-md
+                                   py-3
+                                   text-xs
+                                   font-semibold
+                                   transition">
+                                    Xabar yuborish
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800
+        });
+    </script>
+    <script>
+        lucide.createIcons();
+    </script>
+
+    <script>
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.textContent = msg;
+            t.style.opacity = '1';
+            t.style.transform = 'translate(-50%, -6px)';
+            clearTimeout(window.__toastTimer);
+            window.__toastTimer = setTimeout(() => {
+                t.style.opacity = '0';
+                t.style.transform = 'translate(-50%, 0)';
+            }, 2200);
+        }
+
+        function openModal() {
+            document.getElementById('modal-overlay').classList.add('show');
+        }
+        function closeModal() {
+            document.getElementById('modal-overlay').classList.remove('show');
+        }
+
+        function getDirections(place) {
+            document.getElementById('modal-icon').textContent = '🧭';
+            document.getElementById('modal-title').textContent = "Yo'nalishlar";
+            document.getElementById('modal-body').innerHTML = `
+        <p class="mb-3"><span class="text-neutral-200 font-medium">${place}</span> manziliga yo'l tarifi.</p>
+        <div class="rounded-lg border border-neutral-700 p-3 flex items-center justify-between">
+          <span>🚗 Avtomobilda</span><span class="text-[var(--gold-1)]">≈ 18 daq</span>
+        </div>
+        <div class="rounded-lg border border-neutral-700 p-3 flex items-center justify-between mt-2">
+          <span>🚶 Piyoda</span><span class="text-[var(--gold-1)]">≈ 42 daq</span>
+        </div>
+        <div class="rounded-lg border border-neutral-700 p-3 flex items-center justify-between mt-2">
+          <span>🚇 Metroda</span><span class="text-[var(--gold-1)]">≈ 25 daq</span>
+        </div>
+      `;
+            document.getElementById('modal-actions').innerHTML = `
+        <button class="btn-primary flex-1 rounded-lg py-2.5 text-sm" onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(place)}','_blank')">Xaritada ochish</button>
+        <button class="btn-outline flex-1 rounded-lg py-2.5 text-sm" onclick="closeModal()">Yopish</button>
+      `;
+            openModal();
+        }
+
+        function bookNow(place) {
+            document.getElementById('modal-icon').textContent = '📅';
+            document.getElementById('modal-title').textContent = "Band qilish";
+            document.getElementById('modal-body').innerHTML = `
+        <p class="mb-3"><span class="text-neutral-200 font-medium">${place}</span> uchun joy band qilinmoqda.</p>
+        <div class="rounded-lg border border-neutral-700 p-3">
+          <label class="block text-xs text-neutral-500 mb-1">Sana</label>
+          <input type="date" class="w-full bg-transparent outline-none text-neutral-200 text-sm" />
+        </div>
+        <div class="rounded-lg border border-neutral-700 p-3 mt-2">
+          <label class="block text-xs text-neutral-500 mb-1">Mehmonlar soni</label>
+          <input type="number" min="1" value="2" class="w-full bg-transparent outline-none text-neutral-200 text-sm" />
+        </div>
+      `;
+            document.getElementById('modal-actions').innerHTML = `
+        <button class="btn-primary flex-1 rounded-lg py-2.5 text-sm" onclick="confirmBooking('${place}')">Tasdiqlash</button>
+        <button class="btn-outline flex-1 rounded-lg py-2.5 text-sm" onclick="closeModal()">Bekor qilish</button>
+      `;
+            openModal();
+        }
+
+        function confirmBooking(place) {
+            closeModal();
+            showToast(place + " uchun joy band qilindi ✓");
+        }
+
+        function focusPin(name) {
+            showToast(name + ' tanlandi');
+        }
+    </script>
+
+    <script>
+        /* ---- Carousel logic ---- */
+        document.querySelectorAll('[data-carousel]').forEach(carousel => {
+            const track = carousel.querySelector('[data-track]');
+            const slides = carousel.querySelectorAll('.carousel-slide');
+            const dotsWrap = carousel.querySelector('[data-dots]');
+            let index = 0;
+
+            slides.forEach((_, i) => {
+                const dot = document.createElement('span');
+                dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+                dot.onclick = () => goTo(i);
+                dotsWrap.appendChild(dot);
+            });
+
+            function update() {
+                track.style.transform = `translateX(-${index * 100}%)`;
+                dotsWrap.querySelectorAll('.carousel-dot').forEach((d, i) => d.classList.toggle('active', i === index));
+            }
+            function goTo(i) {
+                index = (i + slides.length) % slides.length;
+                update();
+            }
+            carousel.__goTo = goTo;
+            carousel.__getIndex = () => index;
+            carousel.__len = slides.length;
+
+            // autoplay
+            let timer = setInterval(() => goTo(carousel.__getIndex() + 1), 4500);
+            carousel.addEventListener('mouseenter', () => clearInterval(timer));
+            carousel.addEventListener('mouseleave', () => timer = setInterval(() => goTo(carousel.__getIndex() + 1), 4500));
+        });
+
+        function moveCarousel(btn, dir) {
+            const carousel = btn.closest('[data-carousel]');
+            carousel.__goTo(carousel.__getIndex() + dir);
+        }
+
+        /* ---- Toast ---- */
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.textContent = msg;
+            t.style.opacity = '1';
+            t.style.transform = 'translate(-50%, -6px)';
+            clearTimeout(window.__toastTimer);
+            window.__toastTimer = setTimeout(() => {
+                t.style.opacity = '0';
+                t.style.transform = 'translate(-50%, 0)';
+            }, 2200);
+        }
+
+        /* ---- Modal ---- */
+        function openModal() { document.getElementById('modal-overlay').classList.add('show'); }
+        function closeModal() { document.getElementById('modal-overlay').classList.remove('show'); }
+
+        function getDirections(place) {
+            document.getElementById('modal-icon').textContent = '🧭';
+            document.getElementById('modal-title').textContent = "Yo'nalishni olish";
+            document.getElementById('modal-body').innerHTML = `
+        <p class="mb-3"><span class="text-neutral-200 font-medium">${place}</span> manziliga yo'l tarifi.</p>
+        <div class="rounded-lg border border-neutral-700 p-3 flex items-center justify-between">
+          <span>🚗 Avtomobilda</span><span class="text-[var(--gold-1)]">≈ 14 daq</span>
+        </div>
+        <div class="rounded-lg border border-neutral-700 p-3 flex items-center justify-between mt-2">
+          <span>🚶 Piyoda</span><span class="text-[var(--gold-1)]">≈ 35 daq</span>
+        </div>
+        <div class="rounded-lg border border-neutral-700 p-3 flex items-center justify-between mt-2">
+          <span>🚇 Metroda</span><span class="text-[var(--gold-1)]">≈ 20 daq</span>
+        </div>
+      `;
+            document.getElementById('modal-actions').innerHTML = `
+        <button class="btn-primary flex-1 rounded-lg py-2.5 text-sm" onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(place)}','_blank')">Xaritada ochish</button>
+        <button class="btn-outline flex-1 rounded-lg py-2.5 text-sm" onclick="closeModal()">Yopish</button>
+      `;
+            openModal();
+        }
+
+        function bookNow(place) {
+            document.getElementById('modal-icon').textContent = '📅';
+            document.getElementById('modal-title').textContent = "Band qilish";
+            document.getElementById('modal-body').innerHTML = `
+        <p class="mb-3"><span class="text-neutral-200 font-medium">${place}</span> uchun joy band qilinmoqda.</p>
+        <div class="rounded-lg border border-neutral-700 p-3">
+          <label class="block text-xs text-neutral-500 mb-1">Sana</label>
+          <input type="date" class="w-full bg-transparent outline-none text-neutral-200 text-sm" />
+        </div>
+        <div class="rounded-lg border border-neutral-700 p-3 mt-2">
+          <label class="block text-xs text-neutral-500 mb-1">Mehmonlar soni</label>
+          <input type="number" min="1" value="2" class="w-full bg-transparent outline-none text-neutral-200 text-sm" />
+        </div>
+      `;
+            document.getElementById('modal-actions').innerHTML = `
+        <button class="btn-primary flex-1 rounded-lg py-2.5 text-sm" onclick="confirmBooking('${place}')">Tasdiqlash</button>
+        <button class="btn-outline flex-1 rounded-lg py-2.5 text-sm" onclick="closeModal()">Bekor qilish</button>
+      `;
+            openModal();
+        }
+
+        function confirmBooking(place) {
+            closeModal();
+            showToast(place + " uchun joy band qilindi ✓");
+        }
+    </script>
+
+    <script>
+
+        function showTab(tabName, clickedButton) {
+
+            /* Barcha kontentlarni yashirish */
+            const contents =
+                document.querySelectorAll(".tab-content");
+
+            contents.forEach(function (content) {
+
+                content.classList.add("hidden");
+
+            });
+
+
+            /* Tanlangan kontentni ko'rsatish */
+            const selectedContent =
+                document.getElementById(tabName);
+
+            selectedContent.classList.remove("hidden");
+
+
+            /* Barcha tablarni qayta sozlash */
+            const buttons =
+                document.querySelectorAll(".tab-btn");
+
+            buttons.forEach(function (button) {
+
+                button.classList.remove(
+                    "text-[#d8ad59]"
+                );
+
+                button.classList.add(
+                    "text-[#8c8c8c]"
+                );
+
+
+                const line =
+                    button.querySelector(".active-line");
+
+                line.classList.add("hidden");
+
+            });
+
+
+            /* Aktiv tab */
+            clickedButton.classList.remove(
+                "text-[#8c8c8c]"
+            );
+
+            clickedButton.classList.add(
+                "text-[#d8ad59]"
+            );
+
+
+            const activeLine =
+                clickedButton.querySelector(".active-line");
+
+            activeLine.classList.remove("hidden");
+
+        }
+
+    </script>
+</body>
+
+</html>
